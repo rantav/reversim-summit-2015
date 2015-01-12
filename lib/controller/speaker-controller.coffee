@@ -9,5 +9,5 @@ class @SpeakerController extends FastRender.RouteController
   data: ->
     speaker = User.find(@params.id)
     if not speaker then return null
-    document.title = "#{speaker.name()} | Reversim Summit 2014"
+    document.title = "#{speaker.name()} | Reversim Summit 2015"
     {page: 'speaker', speaker: speaker}

@@ -1,0 +1,14 @@
+While building the application:
+error: no such package: 'bootstrap3-less'
+error: no such package: 'marked'
+error: no such package: 'minimongoid'
+error: no such package: 'migrations'
+error: no such package: 'vector'
+error: no such package: 'apm'
+input: Less compiler error: 'packages/bootstrap3-less/bootstrap.lessimport' wasn't found
+
+
+
+error: no such package: 'iron-router'
+error: no such package: 'fast-render'
+error: no such package: 'spin'

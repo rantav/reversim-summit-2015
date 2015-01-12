@@ -10,7 +10,7 @@ class @ProposalsController extends FastRender.RouteController
       q.tags = filterTag
     Meteor.subscribe('proposals', q, {limit: limit, sort})
 
-  after: -> document.title = "Proposals | Reversim Summit 2014"
+  after: -> document.title = "Proposals | Reversim Summit 2015"
 
   tempalte: 'proposals'
 

@@ -8,7 +8,7 @@ class @VoteController extends FastRender.RouteController
       q.tags = filterTag
     Meteor.subscribe('proposals-min', q)
 
-  after: -> document.title = "Vote | Reversim Summit 2014"
+  after: -> document.title = "Vote | Reversim Summit 2015"
 
   tempalte: 'vote'
 

@@ -23,7 +23,7 @@ Deps.autorun(->
   if Session.get("loadDisqus") && !window.DISQUS
     # Below is the Disqus Universal Code
     # (in Coffeescript, backticks escape Javascript code)
-    disqus_shortname = 'summit2014'
+    disqus_shortname = 'summit2015'
 
     (->
      dsq = document.createElement('script')

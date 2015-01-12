@@ -1,6 +1,6 @@
 class @RegisterController extends FastRender.RouteController
 
-  after: -> document.title = "Register | Reversim Summit 2014"
+  after: -> document.title = "Register | Reversim Summit 2015"
 
   tempalte: 'register'
 

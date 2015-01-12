@@ -1,4 +1,4 @@
-reversim-summit-2014
+reversim-summit-2015
 ====================
 
-Website and content for Reversim Summit 2014. summit2014.reversim.com
+Website and content for Reversim Summit 2015. http://summit2015.reversim.com
