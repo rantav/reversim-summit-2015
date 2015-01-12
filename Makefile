@@ -5,7 +5,7 @@ deploy:
 	bash deploy.sh
 
 deploy-no-tag:
-	meteor deploy summit2014.reversim.com  --settings settings.json
+	meteor deploy summit2015.reversim.com  --settings settings.json
 
 setup:
 	bash setup.sh
