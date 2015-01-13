@@ -25,6 +25,14 @@ Router.before(filters.nProgressHook, {only: [
   'infographics'
 ]})
 
+Router.configure
+  layoutTemplate: 'layout'
+  loadingTemplate: 'Loading'
+  notFoundTemplate: 'notFound'
+  templateNameConverter: 'upperCamelCase'
+  routeControllerNameConverter: 'upperCamelCase'
+  # trackPageView: true
+
 Router.after(filters.resetScroll, {except:['wishes', 'proposals', 'speakers', 'vote']});
 
 Router.map ->
@@ -226,12 +234,6 @@ Router.map ->
     data: -> page: 'community'
     fastRender: true
     onAfterAction: -> document.title = "Community | Reversim Summit 2015"
-
-
-Router.configure
-  layoutTemplate: 'layout'
-  yieldTemplates:
-    'nav': to: 'nav'
 
 Router.fullPath = (routeName, params) ->
   Meteor.absoluteUrl().slice(0, -1) + Router.path(routeName, params)

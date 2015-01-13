@@ -1,4 +1,5 @@
 - Add page: /s2014 page
+- Add Loading template:   loadingTemplate: 'Loading'
 
 missing:
 While building the application:
