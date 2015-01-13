@@ -3,15 +3,21 @@
   <li class="{{activeClass 'home'}}">
     <a href="{{pathFor 'home'}}">Home</a>
   </li>
+  <!--
   <li class="{{activeClass 'agenda'}}">
     <a href="{{pathFor 'agenda'}}">Agenda</a>
   </li>
+  -->
+  <!--
   <li class="{{activeClass 'proposals'}}">
     <a href="{{pathFor 'proposals'}}">Proposals</a>
   </li>
+  -->
+  <!--
   <li class="{{activeClass 'speakers'}}">
     <a href="{{pathFor 'speakers'}}">Speakers</a>
   </li>
+  -->
   {{#if canSeeHidden}}
     <li class="{{activeClass 'users'}}">
       <a href="{{pathFor 'users'}}">Users <small>({{users}})</small></a>
@@ -30,10 +36,18 @@
       More <span class="caret"></span>
     </a>
     <ul class="dropdown-menu">
+      <!--
       <li class="{{activeClass 'about'}}"><a href="{{pathFor 'about'}}">About</a></li>
+      -->
+      <!--
       <li class="{{activeClass 'info'}}"><a href="{{pathFor 'info'}}">Info</a></li>
+      -->
+      <!--
       <li class="{{activeClass 'community'}}"><a href="{{pathFor 'community'}}">Community</a></li>
+      -->
+      <!--
       <li class="{{activeClass 'sponsors'}}"><a href="{{pathFor 'sponsors'}}">Sponsors</a></li>
+      -->
       <li class="{{activeClass 'coc'}}"><a href="{{pathFor 'coc'}}">Code of Conduct</a></li>
       <li class="{{activeClass 's2013'}}"><a href="{{pathFor 's2013'}}">2013</a></li>
     </ul>
