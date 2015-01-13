@@ -1,3 +1,6 @@
+- Add s2014 page
+
+missing:
 While building the application:
 error: no such package: 'bootstrap3-less'
 error: no such package: 'marked'
@@ -8,7 +11,7 @@ error: no such package: 'apm'
 input: Less compiler error: 'packages/bootstrap3-less/bootstrap.lessimport' wasn't found
 
 
-
+re-added:
 error: no such package: 'iron-router'
 error: no such package: 'fast-render'
 error: no such package: 'spin'
