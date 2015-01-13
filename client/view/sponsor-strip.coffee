@@ -1,1 +1,2 @@
-Template.sponsorStrip.sponsors = -> _.shuffle(Sponsor.all())
+Template.sponsorStrip.helpers
+  sponsors: -> _.shuffle(Sponsor.all())

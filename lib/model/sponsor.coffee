@@ -1,7 +1,6 @@
 class @Sponsor extends Minimongoid
 
-  @_collection: Vector.collections.sponsors
-  # @_collection: new Meteor.Collection('sponsors')
+  @_collection: new Meteor.Collection('sponsors')
 
   logo: (height) ->
     url = @logoUrl

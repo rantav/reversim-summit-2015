@@ -1,7 +1,6 @@
 class @User extends Minimongoid
 
   @_collection: Meteor.users
-  # @_collection: Vector.collections.accounts
 
   proposals: ->
     Proposal.where({speaker_ids: @id})

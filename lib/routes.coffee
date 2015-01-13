@@ -65,7 +65,7 @@ Router.map ->
     onAfterAction: -> document.title = "Propose | Reversim Summit 2015"
 
   @route 'wishes',
-    path: '/propose'
+    path: '/wishes'
     tempalte: 'wishes'
     fastRender: true
     data: -> page: 'wishes'
@@ -82,8 +82,8 @@ Router.map ->
       items: AgendaItem.all()
     onAfterAction: -> document.title = "Agenda | Reversim Summit 2015"
 
-  @route 'proposal', _.extend(path: '/proposal/:id/:title(*)?', proposalRouteConfig)
-  @route 'proposal', _.extend(path: '/proposal/:id', proposalRouteConfig)
+  @route 'proposal1', _.extend(path: '/proposal/:id/:title*', proposalRouteConfig)
+  @route 'proposal2', _.extend(path: '/proposal/:id', proposalRouteConfig)
 
   @route 'proposals',
     path: '/proposals/:limit?'
@@ -137,7 +137,7 @@ Router.map ->
 
 
   @route 'speaker',
-    path: '/speaker/:id/:name(*)?'
+    path: '/speaker/:id/*'
     fastRender: true
     waitOn: ->
       Meteor.subscribe('speakers', {_id: @params.id})
@@ -166,7 +166,7 @@ Router.map ->
     onAfterAction: -> document.title = "Users | Reversim Summit 2015"
 
   @route 'user',
-    path: '/user/:id/:name(*)?'
+    path: '/user/:id/*'
     fastRender: true
     waitOn: ->
       Meteor.subscribe('speakers', {_id: @params.id})
@@ -179,7 +179,7 @@ Router.map ->
       {page: 'speaker', speaker: speaker}
 
   @route 'wish',
-    path: '/wish/:id/:title(*)?'
+    path: '/wish/:id/*'
     waitOn: -> Meteor.subscribe('wishes', _id: @params.id)
     tempalte: 'wish'
     fastRender: true

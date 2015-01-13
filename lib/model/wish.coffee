@@ -1,6 +1,4 @@
-root = exports ? this
-
-root.Wish = class Wish
+class @Wish
 
   @makeWish: (options) ->
     if not Meteor.userId()
@@ -23,7 +21,7 @@ root.Wish = class Wish
     comment = {commenter: Meteor.userId(), content: content}
     Wishes.update(@data._id, $push: comments: comment)
 
-root.Wishes = new Meteor.Collection "wishes"
+@Wishes = new Meteor.Collection "wishes"
 
 Wishes.allow
   insert: (userId, doc) ->

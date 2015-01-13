@@ -32,50 +32,50 @@ Template.speaker.events
     uploadedImageDep.changed()
     @speaker.update('profile.uploadedImage': null)
 
-Template.speaker.speaker = -> @speaker
+Template.speaker.helpers
+  speaker: -> @speaker
 
-Template.speaker.uploadedImage = ->
-  uploadedImageDep.depend()
-  img = if uploadedImage then uploadedImage else @speaker.uploadedImage()
-  if img
-    "#{img}/convert?h=120&w=120"
+  uploadedImage: ->
+    uploadedImageDep.depend()
+    img = if uploadedImage then uploadedImage else @speaker.uploadedImage()
+    if img
+      "#{img}/convert?h=120&w=120"
 
-Template.speaker.canEdit = -> canEdit.call(@)
+  canEdit: -> canEdit.call(@)
+
+  photo: -> @speaker.photoUrl(120)
+
+  photoFromService:  -> @speaker.photoUrlFromService(120)
+
+  editMode: ->
+    canEdit.call(@) and ((not @speaker.hasBio()) or @speaker.editing())
+
+  twitterShareNotMeUrl: ->
+    url = Router.fullPath('speaker', id: @speaker.id)
+    shareText = "#{@speaker.name()} will be speaking at reversim conf!"
+    "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
+
+  twitterShareMeUrl: ->
+    url = Router.fullPath('speaker', id: @speaker.id)
+    shareText = "I'll be speaking at reversim conf!"
+    "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
+
+  canSeeTrackRecord: ->
+    cur = User.current()
+    @speaker.me() or (cur and (cur.moderator() or cur.admin()))
+
+  canSeeEmail: ->
+    cur = User.current()
+    @speaker.me() or (cur and (cur.moderator() or cur.admin()))
+
+  hasProposals: -> @speaker.proposals().length > 0
+
+  proposals: -> @speaker.proposals()
 
 canEdit = ->
   cur = User.current()
   @speaker.me() or (cur and cur.admin())
 
-Template.speaker.photo = ->
-  @speaker.photoUrl(120)
-
-Template.speaker.photoFromService = ->
-  @speaker.photoUrlFromService(120)
-
-Template.speaker.editMode = ->
-  canEdit.call(@) and ((not @speaker.hasBio()) or @speaker.editing())
-
-Template.speaker.twitterShareNotMeUrl = ->
-    url = Router.fullPath('speaker', id: @speaker.id)
-    shareText = "#{@speaker.name()} will be speaking at reversim conf!"
-    "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
-
-Template.speaker.twitterShareMeUrl = ->
-    url = Router.fullPath('speaker', id: @speaker.id)
-    shareText = "I'll be speaking at reversim conf!"
-    "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
-
-Template.speaker.canSeeTrackRecord = ->
-  cur = User.current()
-  @speaker.me() or (cur and (cur.moderator() or cur.admin()))
-
-Template.speaker.canSeeEmail = ->
-  cur = User.current()
-  @speaker.me() or (cur and (cur.moderator() or cur.admin()))
-
-Template.speaker.hasProposals = -> @speaker.proposals().length > 0
-
-Template.speaker.proposals = -> @speaker.proposals()
 
 Template.speaker.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()

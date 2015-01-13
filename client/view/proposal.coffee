@@ -23,22 +23,20 @@ Template.proposal.events
     if speakersUpdated
       document.location = document.location
 
-Template.proposal.proposal = -> @proposal
-Template.proposal.speakers = -> @proposal.speakers()
-Template.proposal.speakerIds = -> @proposal.speakers().map((s) -> s.id)
+Template.proposal.helpers
+  proposal: -> @proposal
+  speakers: -> @proposal.speakers()
+  speakerIds: -> @proposal.speakers().map((s) -> s.id)
+
+  canEdit: -> canEdit(@proposal)
+
+  photo: (user) -> user.photoUrl(40)
+
+  editMode: -> @proposal.editing and canEdit(@proposal)
 
 canEdit = (proposal) ->
   Meteor.userId() and (proposal.mine() or User.current().admin())
   # Meteor.userId() and User.current().admin()
-
-Template.proposal.canEdit = -> canEdit(@proposal)
-
-
-Template.proposal.photo = (user) ->
-  user.photoUrl(40)
-
-Template.proposal.editMode = ->
-  @proposal.editing and canEdit(@proposal)
 
 Template.proposal.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()

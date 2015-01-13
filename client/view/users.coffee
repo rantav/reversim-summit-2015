@@ -11,23 +11,23 @@ Template.users.events
     @destroy()
     alertify.success('OK, Deleted')
 
-Template.users.allowed = ->
-  user = User.current()
-  user and (user.admin() or user.moderator())
+Template.users.helpers
 
-Template.users.users = ->
-  User.all()
+  allowed: ->
+    user = User.current()
+    user and (user.admin() or user.moderator())
 
-Template.users.photo = (user) ->
-  user.photoUrl(40)
+  users: -> User.all()
 
-Template.users.disabledStr = ->
-  user = User.current()
-  if not (user and user.admin())
-    'disabled'
+  photo: (user) -> user.photoUrl(40)
 
-Template.users.adminCheckedStr = (user) ->
-  if user.admin() then 'checked' else ''
+  disabledStr: ->
+    user = User.current()
+    if not (user and user.admin())
+      'disabled'
 
-Template.users.moderatorCheckedStr = (user) ->
-  if user.moderator() then 'checked' else ''
+  adminCheckedStr: (user) ->
+    if user.admin() then 'checked' else ''
+
+  moderatorCheckedStr: (user) ->
+    if user.moderator() then 'checked' else ''

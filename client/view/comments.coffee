@@ -9,5 +9,6 @@ Template.comments.events
       @addComment(content)
       $('#add-comment').val('')
 
-Template.comments.photoSmall = (userId) ->
-  userId and User.find(userId).photoUrl(20)
+Template.comments.helpers
+  photoSmall:  (userId) ->
+    userId and User.find(userId).photoUrl(20)

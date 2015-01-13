@@ -1,5 +1,3 @@
-Template.about.moderators = ->
-  User.allModerators()
-
-Template.about.photo = (user)->
-  user.photoUrl(120)
+Template.about.helpers
+  moderators:  -> User.allModerators()
+  photo: (user) -> user.photoUrl(120)

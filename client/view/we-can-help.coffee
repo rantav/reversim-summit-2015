@@ -8,9 +8,10 @@ Template.weCanHelp.events
       alertify.success("Thank you #{name}, we will get back to you!")
       $('#we-can-help').modal('hide')
 
-Template.weCanHelp.speaker = ->
-  u = User.current()
-  return if u then u else name: ''
+Template.weCanHelp.helpers
+  speaker: ->
+    u = User.current()
+    return if u then u else name: ''
 
 Template.weCanHelp.rendered = ->
   $('.tooltiped').tooltip()

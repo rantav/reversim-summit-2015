@@ -25,28 +25,29 @@ Template.wish.events
     Wishes.update(@wish._id, $set: updateObj)
 
 wish = null
-Template.wish.wish = ->
-  wish = @wish
-  @wish
 
-Template.wish.wishObj = ->
-  new Wish(@wish)
+Template.wish.helpers
+  wish: ->
+    wish = @wish
+    @wish
 
-Template.wish.positiveVotes = ->
-  user for user, vote of @wish.votes when vote
+  wishObj: -> new Wish(@wish)
 
-Template.wish.photo = (userId) ->
-  userId and User.find(userId).photoUrl(40)
+  positiveVotes: ->
+    user for user, vote of @wish.votes when vote
 
-Template.wish.photoSmall = (userId) ->
-  userId and User.find(userId).photoUrl(20)
+  photo: (userId) ->
+    userId and User.find(userId).photoUrl(40)
 
-Template.wish.owns = (wish) ->
-  u = Meteor.userId()
-  wish and u and wish.owner == u
+  photoSmall: (userId) ->
+    userId and User.find(userId).photoUrl(20)
 
-Template.wish.editMode = ->
-  Template.wish.owns(@wish) and @wish.editing
+  owns: (wish) ->
+    u = Meteor.userId()
+    wish and u and wish.owner == u
+
+  editMode: ->
+    Template.wish.owns(@wish) and @wish.editing
 
 Template.wish.rendered = ->
   window.disqus_url = Router.fullPath('wish', id: wish._id)

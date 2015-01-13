@@ -23,46 +23,48 @@ Template.wishes.events
   'click .sign-in': ->
     Accounts._loginButtonsSession.set('dropdownVisible', true);
 
-Template.wishes.wishes = ->
-  Wishes.find({}, sort: createdAt: -1)
+Template.wishes.helpers
+  wishes: ->
+    Wishes.find({}, sort: createdAt: -1)
 
-Template.wishes.photo = (userId) ->
-  userId and User.find(userId).photoUrl(40)
+  photo: (userId) ->
+    userId and User.find(userId).photoUrl(40)
 
-Template.wishes.photoSmall = (userId) ->
-  u = User.find(userId)
-  u.photoUrl(20) if u
+  photoSmall: (userId) ->
+    u = User.find(userId)
+    u.photoUrl(20) if u
 
-Template.wishes.commentsCount = (wish) ->
-  wish.comments.length
+  commentsCount: (wish) ->
+    wish.comments.length
 
-Template.wishes.hasComments = (wish) ->
-  wish.comments.length > 0
+  hasComments: (wish) ->
+    wish.comments.length > 0
 
-Template.wishes.commentsText = (wish) ->
-  n = wish.comments.length
-  if n == 1 then return '1 comment'
-  if n > 1 then return "#{n} comments"
+  commentsText: (wish) ->
+    n = wish.comments.length
+    if n == 1 then return '1 comment'
+    if n > 1 then return "#{n} comments"
 
-Template.wishes.owns = (wish) ->
-  u = Meteor.userId()
-  wish and u and wish.owner == u
+  owns: (wish) ->
+    u = Meteor.userId()
+    wish and u and wish.owner == u
 
-Template.wishes.editMode = ->
-  Template.wishes.owns(@) and @editing
+  editMode: ->
+    Template.wishes.owns(@) and @editing
+
+  positiveVotesShort: (wish) ->
+    votes(wish).slice(0, votesMoreThreshold)
+
+  positiveVotesHasMore: (wish) ->
+    votes(wish).length > votesMoreThreshold
+
+  positiveVotesMore: (wish) ->
+    votes(wish).length - votesMoreThreshold
 
 votes = (wish) ->
   user for user, vote of wish.votes when vote
 votesMoreThreshold = 6
 
-Template.wishes.positiveVotesShort = (wish) ->
-  votes(wish).slice(0, votesMoreThreshold)
-
-Template.wishes.positiveVotesHasMore = (wish) ->
-  votes(wish).length > votesMoreThreshold
-
-Template.wishes.positiveVotesMore = (wish) ->
-  votes(wish).length - votesMoreThreshold
 
 Template.wishes.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()

@@ -17,7 +17,7 @@ Template.disqus.rendered = ->
   )
 
 
-Deps.autorun(->
+Tracker.autorun(->
   # Load the Disqus embed.js the first time the `disqus` template is rendered
   # but never more than once
   if Session.get("loadDisqus") && !window.DISQUS

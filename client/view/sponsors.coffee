@@ -1,2 +1,2 @@
-Template.sponsors.logo = ->
-  @logo(120)
+Template.sponsors.helpers
+  logo: -> @logo(120)

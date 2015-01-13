@@ -1,31 +1,34 @@
-Template.proposals.proposals = -> @proposals
+Template.proposals.helpers
 
-Template.proposals.photo = (user) -> user.photoUrl(120) if user
+  proposals: -> @proposals
 
-Template.proposals.canSeeNumLoaded = ->
-  u = User.current()
-  u and (u.admin() or u.moderator())
+  photo: (user) -> user.photoUrl(120) if user
 
-Template.proposals.numLoaded = -> @proposals.length if @proposals
+  canSeeNumLoaded: ->
+    u = User.current()
+    u and (u.admin() or u.moderator())
+
+  numLoaded: -> @proposals.length if @proposals
+
+  speakers: (proposal) -> proposal.speakers()
+
+  hasMore: -> true
+    # count = Counts.findOne('proposals')
+    # count and count.count > Proposal.count()
+
+  filterByTypeUrl: ->
+    Router.path('proposals') + "?filterType=#{@type}"
+
+  canTag: ->
+    u = User.current()
+    u and (u.admin() or u.moderator())
 
 Template.proposals.rendered = ->
-  $(@findAll('[data-toggle="tooltip"]')).tooltip()
+  @$('[data-toggle="tooltip"]').tooltip()
 
 Template.proposals.destroyed = ->
-  $('[data-toggle="tooltip"]').tooltip('destroy')
+  @$('[data-toggle="tooltip"]').tooltip('destroy')
 
-Template.proposals.speakers = (proposal) -> proposal.speakers()
-
-Template.proposals.hasMore = -> true
-  # count = Counts.findOne('proposals')
-  # count and count.count > Proposal.count()
-
-Template.proposals.filterByTypeUrl = ->
-  Router.path('proposals') + "?filterType=#{@type}"
-
-Template.proposals.canTag = ->
-  u = User.current()
-  u and (u.admin() or u.moderator())
 
 Template.proposals.events
   'click #load-more': ->

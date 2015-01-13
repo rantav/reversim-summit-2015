@@ -1,26 +1,28 @@
-Template.nav.activeClass = (name) ->
-  if @page == name then 'active' else ''
+Template.nav.helpers
+
+  activeClass:  (name) ->
+    if @page == name then 'active' else ''
+
+  wishes: -> count('wishes')
+
+  proposals: -> count('proposals')
+
+  speakers: -> count('speakers')
+
+  users: -> User.count()
+
+  isSpeaker: ->
+    cur = User.current()
+    cur and cur.speaker()
+
+  user: -> User.current()
+
+  canSeeHidden: ->
+    user = User.current()
+    user and (user.admin() or user.moderator())
+
+  hasCount: (col) -> Counts.findOne(col)
 
 count = (col) ->
   data = Counts.findOne(col)
   if data then return data.count
-
-Template.nav.wishes = -> count('wishes')
-
-Template.nav.proposals = -> count('proposals')
-
-Template.nav.speakers = -> count('speakers')
-
-Template.nav.users = -> User.count()
-
-Template.nav.isSpeaker = ->
-  cur = User.current()
-  cur and cur.speaker()
-
-Template.nav.user = -> User.current()
-
-Template.nav.canSeeHidden = ->
-  user = User.current()
-  user and (user.admin() or user.moderator())
-
-Template.nav.hasCount = (col) -> Counts.findOne(col)

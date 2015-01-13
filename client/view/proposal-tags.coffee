@@ -3,5 +3,6 @@ Template.proposalTags.events
     e.preventDefault()
     @setTags(t.trim() for t in n.find('input').value.split(','))
 
-Template.proposalTagsDisplay.filterByTagUrl = ->
-  Router.path('proposals') + "?filterTag=#{@}"
+Template.proposalTagsDisplay.helpers
+  filterByTagUrl: ->
+    Router.path('proposals') + "?filterTag=#{@}"

@@ -1,12 +1,13 @@
-Template.agendaItem.formatTime = (t) ->
-  moment(t).tz('Asia/Jerusalem').format('HH:mm')
+Template.agendaItem.helpers
 
-Template.agendaItem.editing = ->
-  Session.get('editingAgenda')
+  formatTime: (t) ->
+    moment(t).tz('Asia/Jerusalem').format('HH:mm')
 
-Template.agendaItem.class1Colspan = ->
-  if @class2 or @class3 then 1 else 3
+  editing: ->
+    Session.get('editingAgenda')
 
+  class1Colspan: ->
+    if @class2 or @class3 then 1 else 3
 
 Template.agendaItem.events
   'keyup input': (event, context) ->

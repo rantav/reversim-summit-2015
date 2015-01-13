@@ -1,17 +1,19 @@
 mid = new Date('02/25/2014 00:00:00')
-Template.agenda.day1 = ->
-  _.sortBy(@items.filter((i) -> i.time < mid), (i) -> i.time)
 
-Template.agenda.day2 = ->
-  _.sortBy(@items.filter((i) -> i.time > mid), (i) -> i.time)
+Template.agenda.helpers
+  day1:  ->
+    _.sortBy(@items.filter((i) -> i.time < mid), (i) -> i.time)
 
-Template.agenda.canSee = -> true
-  # u = User.current()
-  # u and (u.admin() or u.moderator())
+  day2: ->
+    _.sortBy(@items.filter((i) -> i.time > mid), (i) -> i.time)
 
-Template.agenda.canEdit = ->
-  u = User.current()
-  u and u.admin()
+  canSee:  -> true
+    # u = User.current()
+    # u and (u.admin() or u.moderator())
+
+  canEdit:  ->
+    u = User.current()
+    u and u.admin()
 
 Template.agenda.events
   'submit #add-form': (event, context) ->

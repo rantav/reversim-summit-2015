@@ -1,23 +1,19 @@
-Template.agendaSessionDisplay.splits = ->
-  if @ then @split(',')
+Template.agendaSessionDisplay.helpers
+  splits:  ->
+    if @ then @split(',')
 
-Template.agendaSessionDisplay.isSession = ->
-  !!Proposal.find(String(@))
+  isSession:  -> !!Proposal.find(String(@))
 
-Template.agendaSessionDisplay.session = ->
-  Proposal.find(String(@))
+  session: -> Proposal.find(String(@))
 
-Template.agendaSessionDisplay.speakers = ->
-  @speakers()
+  speakers: -> @speakers()
 
-Template.agendaSessionDisplay.photo = (user) ->
-  user.photoUrl(40) if user
+  photo:  (user) -> user.photoUrl(40) if user
 
-Template.agendaSessionDisplay.hallOfShame = ->
-  @toString() == 'The Hall of Shame'
+  hallOfShame:  -> @toString() == 'The Hall of Shame'
 
 Template.agendaSessionDisplay.rendered = ->
-  $(@findAll('[data-toggle="tooltip"]')).tooltip()
+    @$('[data-toggle="tooltip"]').tooltip()
 
 Template.agendaSessionDisplay.destroyed = ->
-  $('[data-toggle="tooltip"]').tooltip('destroy')
+  @$('[data-toggle="tooltip"]').tooltip('destroy')
