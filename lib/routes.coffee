@@ -203,7 +203,14 @@ Router.map ->
     tempalte: 's2013'
     fastRender: true
     data: -> page: 's2013'
-    onAfterAction: -> document.title = "2013 | Reversim Summit 2015"
+    onAfterAction: -> document.title = "2013 | Reversim Summit"
+
+  @route 's2014',
+    path: '/s2014'
+    tempalte: 's2014'
+    fastRender: true
+    data: -> page: 's2014'
+    onAfterAction: -> document.title = "2014 | Reversim Summit"
 
   @route 'info',
     path: '/info'
