@@ -24,24 +24,24 @@
 <div class='actions-single'>
   {{#if owns wish}}
     {{#if editMode}}
-      <a href='javascript:void(0)' class='save no-underline' data-toggle="tooltip" title='Save'>
+      <a href='#' class='save no-underline' data-toggle="tooltip" title='Save'>
         <i class='fa fa-save fa-2x'></i>
       </a>
     {{/if}}
-    <a href='javascript:void(0)' class='delete no-underline' data-toggle="tooltip" title='Delete'>
+    <a href='#' class='delete no-underline' data-toggle="tooltip" title='Delete'>
       <i class='fa fa-trash-o fa-2x'></i>
     </a>
     {{#if editMode}}
-      <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Undo Edits'>
+      <a href='#' class='edit no-underline' data-toggle="tooltip" title='Undo Edits'>
         <i class='fa fa-undo fa-2x'></i>
       </a>
     {{else}}
-      <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Edit'>
+      <a href='#' class='edit no-underline' data-toggle="tooltip" title='Edit'>
         <i class='fa fa-edit fa-2x'></i>
       </a>
     {{/if}}
   {{else}}
-    <a href='javascript:void(0)' data-voted='{{userVotedWishStr wish}}' data-toggle="tooltip" title='{{wishVoteTooltip wish}}' class='vote-up no-underline'>
+    <a href='#' data-voted='{{userVotedWishStr wish}}' data-toggle="tooltip" title='Vote' class='vote-up no-underline'>
       <i class='fa fa-thumbs-up fa-2x'></i>
     </a>
   {{/if}}

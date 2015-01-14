@@ -42,12 +42,15 @@ Template.wish.helpers
   photoSmall: (userId) ->
     userId and User.find(userId).photoUrl(20)
 
-  owns: (wish) ->
-    u = Meteor.userId()
-    wish and u and wish.owner == u
+  owns: (wish) -> owns(wish)
 
   editMode: ->
-    Template.wish.owns(@wish) and @wish.editing
+    owns(@wish) and @wish.editing
+
+# Does the current user own the wish?
+owns = (wish) ->
+  u = Meteor.userId()
+  wish and u and wish.owner == u
 
 Template.wish.rendered = ->
   window.disqus_url = Router.fullPath('wish', id: wish._id)
