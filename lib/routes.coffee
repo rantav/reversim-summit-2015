@@ -11,29 +11,30 @@ filters =
     $('body').scrollTop(scrollTo);
     $('body').css("min-height", 0);
 
-Router.before(filters.nProgressHook, {only: [
-  'wish'
-  'wishes',
-  'proposal',
-  'proposals',
-  'speaker',
-  'speakers',
-  'sponsors',
-  'about',
-  'vote',
-  'agenda',
-  'infographics'
-]})
+# Router.onBeforeAction(filters.nProgressHook, {only: [
+#   'wish'
+#   'wishes',
+#   'proposal',
+#   'proposals',
+#   'speaker',
+#   'speakers',
+#   'sponsors',
+#   'about',
+#   'vote',
+#   'agenda',
+#   'infographics'
+# ]})
 
 Router.configure
   layoutTemplate: 'layout'
-  loadingTemplate: 'Loading'
+  loadingTemplate: 'loading'
   notFoundTemplate: 'notFound'
   templateNameConverter: 'upperCamelCase'
   routeControllerNameConverter: 'upperCamelCase'
   # trackPageView: true
 
-Router.after(filters.resetScroll, {except:['wishes', 'proposals', 'speakers', 'vote']});
+# Router.onAfterAction(filters.resetScroll,
+#   {except:['wishes', 'proposals', 'speakers', 'vote']});
 
 Router.map ->
   # @route 'home', path: '/', action: -> @redirect('agenda')
@@ -187,7 +188,7 @@ Router.map ->
       {page: 'speaker', speaker: speaker}
 
   @route 'wish',
-    path: '/wish/:id/*'
+    path: '/wish/:id/:title?'
     waitOn: -> Meteor.subscribe('wishes', _id: @params.id)
     tempalte: 'wish'
     fastRender: true

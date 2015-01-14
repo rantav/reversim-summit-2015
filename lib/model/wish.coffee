@@ -21,7 +21,7 @@ class @Wish
     comment = {commenter: Meteor.userId(), content: content}
     Wishes.update(@data._id, $push: comments: comment)
 
-@Wishes = new Meteor.Collection "wishes"
+@Wishes = new Mongo.Collection("wishes")
 
 Wishes.allow
   insert: (userId, doc) ->

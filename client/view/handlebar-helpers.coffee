@@ -37,11 +37,6 @@ Handlebars.registerHelper 'twitterShareProposalUrl', (proposal)->
 Handlebars.registerHelper 'staticImg', (path)->
   Cdn.cdnify(path)
 
-Handlebars.registerHelper 'wishVoteTooltip', (item) ->
-  u = Meteor.userId()
-  if not u then return "Login to vote"
-  if item.votes and item.votes[u] then 'Unvote' else 'Vote'
-
 Handlebars.registerHelper 'marked', (text) ->
   if text then marked(text)
 
