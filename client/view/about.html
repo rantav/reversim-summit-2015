@@ -1,21 +1,20 @@
 <template name='about'>
-{{#constant}}
   <div>
     <h1>About Reversim Summit 2015</h1>
     <p class="lead">
-      <a href='http://reversim.com/'>Reversim</a> (רברס עם פלטפורמה) is a Hebrew podcast by <a href='https://twitter.com/orilahav'>Ori Lahav</a> and <a href='http://tavory.com/'>Ran Tavory</a> which brings together software developers and product managers, with over 190 recorded episodes over five years and a few k listeners.</p>
+      <a href='http://reversim.com/'>Reversim</a> (רברס עם פלטפורמה) is a Hebrew podcast by <a href='https://twitter.com/orilahav'>Ori Lahav</a> and <a href='http://tavory.com/'>Ran Tavory</a> which brings together software developers and product managers, with over 240 recorded episodes over six years and a few k listeners.</p>
     <p>
       The summit is our intention to create <strong>a conference for developers by developers</strong>. Like in the podcast, we bring the content we are interested in, and we hope you will be too.
     </p>
     <p>
-      This is the second year of this summit. See <a href='http://summit2013.reversim.com/'>Reversim Summit 2013</a> for the previous event.
+      This is the third year of this summit. See <a href='http://summit2013.reversim.com/'>Reversim Summit 2013</a> and <a href='http://summit2014.reversim.com/'>Reversim Summit 2014</a> for the previous events.
     </p>
   </div>
 
-  <div class="row">
-    <div class="col-lg-12">
-      <h2>Who's behind this?</h2>
-      <div class="media col-lg-6">
+  <h2>Who's behind this?</h2>
+  <div class='row'>
+    <div class="media col-md-6 col-sm-12 clearfix">
+      <div class='media'>
         <img class="media-object pull-left about-img img-thumbnail img-thumbnail-120" src='{{staticImg "/img/ppl/ori.jpeg"}}' alt="Ori Lahav" title="Ori Lahav" data-toggle='tooltip' data-placement='right'>
         <div class="media-body">
           <h4 class="media-heading">Ori Lahav</h4>
@@ -24,7 +23,9 @@
           </p>
         </div>
       </div>
-      <div class="media col-lg-6">
+    </div>
+    <div class="col-md-6 col-sm-12 clearfix">
+      <div class='media'>
         <img class="media-object pull-left about-img img-thumbnail img-thumbnail-120" src='{{staticImg "/img/ppl/ran.png"}}' alt="Ran Tavory" title="Ran Tavory" data-toggle='tooltip' data-placement='right'>
         <div class="media-body">
           <h4 class="media-heading">Ran Tavory</h4>
@@ -33,17 +34,20 @@
           </p>
         </div>
       </div>
-      <h2>Our Awesome Team of Moderators:</h2>
-      {{#each moderators}}
-        <div class="media col-lg-6">
+    </div>
+    <!--
+    <h2>Our Awesome Team of Moderators:</h2>
+    {{#each moderators}}
+      <div class="col-md-6 col-sm-12 clearfix">
+        <div class='media'>
           <img class="media-object pull-left about-img img-thumbnail img-thumbnail-120" src="{{photo .}}" alt="{{name}}" title="{{name}}" data-toggle='tooltip' data-placement='right'>
           <div class="media-body">
             <h4 class="media-heading">{{name}}</h4>
             {{{marked bio}}}
           </div>
         </div>
-      {{/each}}
-    </div>
+      </div>
+    {{/each}}
+    -->
   </div>
-{{/constant}}
 </template>
