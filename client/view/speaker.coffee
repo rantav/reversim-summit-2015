@@ -43,9 +43,9 @@ Template.speaker.helpers
 
   canEdit: -> canEdit.call(@)
 
-  photo: -> @speaker.photoUrl(120)
+  photo: -> @speaker?.photoUrl(120)
 
-  photoFromService:  -> @speaker.photoUrlFromService(120)
+  photoFromService:  -> @speaker?.photoUrlFromService(120)
 
   editMode: ->
     canEdit.call(@) and ((not @speaker.hasBio()) or @speaker.editing())
@@ -62,19 +62,19 @@ Template.speaker.helpers
 
   canSeeTrackRecord: ->
     cur = User.current()
-    @speaker.me() or (cur and (cur.moderator() or cur.admin()))
+    @speaker?.me() or (cur and (cur?.moderator() or cur?.admin()))
 
   canSeeEmail: ->
     cur = User.current()
-    @speaker.me() or (cur and (cur.moderator() or cur.admin()))
+    @speaker?.me() or (cur and (cur?.moderator() or cur?.admin()))
 
-  hasProposals: -> @speaker.proposals().length > 0
+  hasProposals: -> @speaker?.proposals()?.length > 0
 
-  proposals: -> @speaker.proposals()
+  proposals: -> @speaker?.proposals()
 
 canEdit = ->
   cur = User.current()
-  @speaker.me() or (cur and cur.admin())
+  @speaker?.me() or (cur and cur?.admin())
 
 
 Template.speaker.rendered = ->
