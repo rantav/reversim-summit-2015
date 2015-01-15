@@ -48,7 +48,7 @@ Template.speaker.helpers
   photoFromService:  -> @speaker?.photoUrlFromService(120)
 
   editMode: ->
-    canEdit.call(@) and ((not @speaker.hasBio()) or @speaker.editing())
+    canEdit.call(@) and ((not @speaker?.hasBio()) or @speaker?.editing())
 
   twitterShareNotMeUrl: ->
     url = Router.fullPath('speaker', id: @speaker.id)

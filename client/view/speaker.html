@@ -62,16 +62,16 @@
 <div class='actions-single'>
   {{#if canEdit}}
     {{#if editMode}}
-      <a href='javascript:void(0)' class='save no-underline' data-toggle="tooltip" title='Save'>
-        <i class='fa fa-save fa-2x'></i>
-      </a>
-      <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Undo Edits'>
-        <i class='fa fa-undo fa-2x'></i>
-      </a>
+      <button class='save btn btn-success' data-toggle="tooltip" title='Save'>
+        <i class='fa fa-save'></i> Save
+      </button>
+      <button class='edit btn btn-warning' data-toggle="tooltip" title='Undo Edits'>
+        <i class='fa fa-undo'></i> Undo
+      </button>
     {{else}}
-      <a href='javascript:void(0)' class='edit no-underline' data-toggle="tooltip" title='Edit'>
-        <i class='fa fa-edit fa-2x'></i>
-      </a>
+      <button class='edit btn btn-default' data-toggle="tooltip" title='Edit'>
+        <i class='fa fa-edit'></i> Edit
+      </button>
     {{/if}}
     <!--
     Wait until accepted
