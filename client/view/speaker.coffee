@@ -37,7 +37,7 @@ Template.speaker.helpers
 
   uploadedImage: ->
     uploadedImageDep.depend()
-    img = if uploadedImage then uploadedImage else @speaker.uploadedImage()
+    img = if uploadedImage then uploadedImage else @speaker?.uploadedImage()
     if img
       "#{img}/convert?h=120&w=120"
 

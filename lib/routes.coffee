@@ -174,18 +174,18 @@ Router.map ->
     data: -> page: 'users'
     onAfterAction: -> document.title = "Users | Reversim Summit 2015"
 
-  # @route 'user',
-  #   path: '/user/:id/:name?'
-  #   fastRender: true
-  #   tempalte: 'speaker'
-  #   waitOn: ->
-  #     Meteor.subscribe('speakers', {_id: @params.id})
-  #   notFoundTemplate: 'notFound'
-  #   data: ->
-  #     speaker = User.find(@params.id)
-  #     if not speaker then return null
-  #     document.title = "#{speaker.name()} | Reversim Summit 2015"
-  #     {page: 'speaker', speaker: speaker}
+  @route 'user',
+    path: '/user/:id/:name?'
+    fastRender: true
+    tempalte: 'user'
+    waitOn: ->
+      Meteor.subscribe('users', {_id: @params.id})
+    notFoundTemplate: 'notFound'
+    data: ->
+      speaker = User.find(@params.id)
+      if not speaker then return null
+      document.title = "#{speaker.name()} | Reversim Summit 2015"
+      {page: 'speaker', speaker: speaker}
 
   @route 'wish',
     path: '/wish/:id/:title?'
