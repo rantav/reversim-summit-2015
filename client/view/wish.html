@@ -24,21 +24,21 @@
 <div class='actions-single'>
   {{#if owns wish}}
     {{#if editMode}}
-      <a href='#' class='save no-underline' data-toggle="tooltip" title='Save'>
-        <i class='fa fa-save fa-2x'></i>
-      </a>
+      <button class='save btn btn-success' data-toggle="tooltip" title='Save'>
+        <i class='fa fa-save'></i> Save
+      </button>
     {{/if}}
-    <a href='#' class='delete no-underline' data-toggle="tooltip" title='Delete'>
-      <i class='fa fa-trash-o fa-2x'></i>
-    </a>
+    <button class='delete btn btn-danger' data-toggle="tooltip" title='Delete'>
+      <i class='fa fa-trash-o'></i> Delete
+    </button>
     {{#if editMode}}
-      <a href='#' class='edit no-underline' data-toggle="tooltip" title='Undo Edits'>
-        <i class='fa fa-undo fa-2x'></i>
-      </a>
+      <button class='edit btn btn-warning' data-toggle="tooltip" title='Undo Edits'>
+        <i class='fa fa-undo'></i> Undo
+      </button>
     {{else}}
-      <a href='#' class='edit no-underline' data-toggle="tooltip" title='Edit'>
-        <i class='fa fa-edit fa-2x'></i>
-      </a>
+      <button class='edit btn btn-default' data-toggle="tooltip" title='Edit'>
+        <i class='fa fa-edit'></i> Edit
+      </button>
     {{/if}}
   {{else}}
     <a href='#' data-voted='{{userVotedWishStr wish}}' data-toggle="tooltip" title='Vote' class='vote-up no-underline'>
