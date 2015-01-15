@@ -1,7 +1,7 @@
 <template name='voteWidget'>
   {{#if votingEnabled}}
     {{#unless mine}}
-      <a href='javascript:void(0)' class='vote-up no-underline pull-right' data-voted='{{userVotedStr .}}' data-toggle="tooltip" title='Vote'>
+      <a href='#' class='vote-up no-underline pull-right' data-voted='{{userVotedStr .}}' data-toggle="tooltip" title='Vote'>
         <i class='fa fa-thumbs-up fa-1x'></i>
       </a>
     {{/unless}}
