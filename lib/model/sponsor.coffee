@@ -1,6 +1,6 @@
 class @Sponsor extends Minimongoid
 
-  @_collection: new Meteor.Collection('sponsors')
+  @_collection: new Mongo.Collection('sponsors')
 
   logo: (height) ->
     url = @logoUrl
@@ -13,3 +13,26 @@ class @Sponsor extends Minimongoid
 
   update: (userId, doc, fields, modifier) ->
     User.find(userId).isAdmin()
+
+@Sponsors = Sponsor._collection
+
+schema = new SimpleSchema
+  logoUrl:
+    type: String
+  logoSmallUrl:
+    type: String
+  name:
+    type: String
+  logoLink:
+    type: String
+  description:
+    type: String
+    optional: true
+  descriptionHeb:
+    type: String
+    optional: true
+  more:
+    type: String
+    optional: true
+
+Sponsors.attachSchema(schema)
