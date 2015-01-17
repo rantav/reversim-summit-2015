@@ -40,7 +40,7 @@ class @User extends Minimongoid
   proposalsInStatus: (statuses) ->
     p for p in @proposals() when p.status in statuses
 
-  uploadedImage: -> @profile.uploadedImage
+  uploadedImage: -> @profile?.uploadedImage
 
   photoUrl: (height) ->
     uploaded = @uploadedImage()

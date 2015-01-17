@@ -15,7 +15,9 @@
   <div class='row'>
     <div class="media col-md-6 col-sm-12 clearfix">
       <div class='media'>
-        <img class="media-object pull-left about-img img-thumbnail img-thumbnail-120" src='{{staticImg "/img/ppl/ori.jpeg"}}' alt="Ori Lahav" title="Ori Lahav" data-toggle='tooltip' data-placement='right'>
+        <div class='pull-left'>
+          <img class="media-object pull-left about-img img-thumbnail img-thumbnail-120" src='{{staticImg "/img/ppl/ori.jpeg"}}' alt="Ori Lahav" title="Ori Lahav" data-toggle='tooltip' data-placement='right'>
+        </div>
         <div class="media-body">
           <h4 class="media-heading">Ori Lahav</h4>
           <p>
@@ -26,7 +28,9 @@
     </div>
     <div class="col-md-6 col-sm-12 clearfix">
       <div class='media'>
-        <img class="media-object pull-left about-img img-thumbnail img-thumbnail-120" src='{{staticImg "/img/ppl/ran.png"}}' alt="Ran Tavory" title="Ran Tavory" data-toggle='tooltip' data-placement='right'>
+        <div class='pull-left'>
+          <img class="media-object about-img img-thumbnail img-thumbnail-120" src='{{staticImg "/img/ppl/ran.png"}}' alt="Ran Tavory" title="Ran Tavory" data-toggle='tooltip' data-placement='right'>
+        </div>
         <div class="media-body">
           <h4 class="media-heading">Ran Tavory</h4>
           <p>
@@ -35,12 +39,15 @@
         </div>
       </div>
     </div>
-    <!--
-    <h2>Our Awesome Team of Moderators:</h2>
+  </div>
+  <h2>Our Awesome Team of Moderators:</h2>
+    <div class='row'>
     {{#each moderators}}
       <div class="col-md-6 col-sm-12 clearfix">
         <div class='media'>
-          <img class="media-object pull-left about-img img-thumbnail img-thumbnail-120" src="{{photo .}}" alt="{{name}}" title="{{name}}" data-toggle='tooltip' data-placement='right'>
+          <div class='pull-left'>
+            <img class="media-object pull-left about-img img-thumbnail img-thumbnail-120" src="{{photo .}}" alt="{{name}}" title="{{name}}" data-toggle='tooltip' data-placement='right'>
+          </div>
           <div class="media-body">
             <h4 class="media-heading">{{name}}</h4>
             {{{marked bio}}}
@@ -48,6 +55,5 @@
         </div>
       </div>
     {{/each}}
-    -->
   </div>
 </template>
