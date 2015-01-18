@@ -1,6 +1,6 @@
 Template.comments.events
   'click .sign-in': ->
-    Accounts._loginButtonsSession.set('dropdownVisible', true)
+    ShowLogin()
 
   'submit form': (event) ->
     event.preventDefault()

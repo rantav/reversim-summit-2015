@@ -64,7 +64,7 @@ average = (arr) -> if arr.length then sum(arr) / arr.length else 0
 
 Template.vote.events
   'click .sign-in': ->
-    Accounts._loginButtonsSession.set('dropdownVisible', true)
+    ShowLogin()
 
   'click .accept': ->
     @update({status: 'accepted'})
