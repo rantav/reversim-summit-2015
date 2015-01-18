@@ -26,3 +26,8 @@ Accounts.onCreateUser (options, user) ->
     user.profile = {}
 
   user
+
+Meteor.startup ->
+  ran = Meteor.users.findOne({"services.google.email": "rantav@gmail.com"})
+  if ran
+    Roles.addUsersToRoles(ran._id, ['admin'], Roles.GLOBAL_GROUP)
