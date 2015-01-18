@@ -14,7 +14,7 @@ setupGa = ->
         a.src = g
         m.parentNode.insertBefore(a, m)
     )(window, document, 'script', '//www.google-analytics.com/analytics.js','ga')
-    ga('create', 'UA-36904731-2', 'reversim.com')
+    ga('create', 'UA-36904731-3', 'reversim.com')
 
   ga('send', 'pageview',
     'page': document.location.pathname,
