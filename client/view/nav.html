@@ -51,7 +51,7 @@
       <li class="{{activeClass 's2014'}}"><a href="{{pathFor 's2014'}}">Summit 2014</a></li>
     </ul>
   </li>
-  <li class="dropdown">{{> loginButtons}}</li>
+  {{> loginButtons}}
   {{#if isSpeaker}}
     {{#with user}}
       <li><a href='{{pathFor "speaker"}}'><strong>My Speaker Page</strong></a></li>

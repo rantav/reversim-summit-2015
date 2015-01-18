@@ -6,7 +6,6 @@
 standard-app-packages
 accounts-google
 accounts-facebook
-accounts-ui
 less
 coffeescript
 spiderable
@@ -19,3 +18,4 @@ mrt:minimongoid
 chuangbo:marked
 aldeed:simple-schema
 aldeed:collection2
+ian:accounts-ui-bootstrap-3

@@ -1,8 +1,3 @@
-Accounts.config
-  forbidClientAccountCreation: true
-  # forbidClientAccountCreation : true
-
-
 Accounts.onCreateUser (options, user) ->
   # Take care of github details
   if (user.services.github)
