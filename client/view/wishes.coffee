@@ -21,7 +21,7 @@ Template.wishes.events
     Wishes.update(@_id, $set: updateObj)
 
   'click .sign-in': ->
-    Accounts._loginButtonsSession.set('dropdownVisible', true);
+    ShowLogin()
 
 Template.wishes.helpers
   wishes: ->

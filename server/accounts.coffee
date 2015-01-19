@@ -1,8 +1,3 @@
-Accounts.config
-  forbidClientAccountCreation: true
-  # forbidClientAccountCreation : true
-
-
 Accounts.onCreateUser (options, user) ->
   # Take care of github details
   if (user.services.github)
@@ -31,3 +26,8 @@ Accounts.onCreateUser (options, user) ->
     user.profile = {}
 
   user
+
+Meteor.startup ->
+  ran = Meteor.users.findOne({"services.google.email": "rantav@gmail.com"})
+  if ran
+    Roles.addUsersToRoles(ran._id, ['admin'], Roles.GLOBAL_GROUP)

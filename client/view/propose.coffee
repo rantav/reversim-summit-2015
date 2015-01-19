@@ -24,7 +24,7 @@ Template.propose.events
       Meteor.call('sendSubmitEmail', p)
 
   'click .sign-in': ->
-    Accounts._loginButtonsSession.set('dropdownVisible', true)
+    ShowLogin()
 
 Template.propose.helpers
   hasBio: (speaker) -> speaker and speaker.hasBio()
