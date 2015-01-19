@@ -32,7 +32,7 @@ Template.proposal.helpers
 
   photo: (user) -> user.photoUrl(40)
 
-  editMode: -> @proposal.editing and canEdit(@proposal)
+  editMode: -> @proposal?.editing and canEdit(@proposal)
 
 canEdit = (proposal) ->
   Meteor.userId() and (proposal.mine() or User.current().admin())
