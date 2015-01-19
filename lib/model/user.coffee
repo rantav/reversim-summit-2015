@@ -6,9 +6,6 @@ class @User extends Minimongoid
     {name: 'proposals', class_name: 'Proposal'}
   ]
 
-  # proposals: ->
-  #   Proposal.where({speaker_ids: @id})
-
   @current: ->
     User.init(Meteor.user()) if Meteor.userId()
 
