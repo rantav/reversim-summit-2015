@@ -2,8 +2,12 @@ class @User extends Minimongoid
 
   @_collection: Meteor.users
 
-  proposals: ->
-    Proposal.where({speaker_ids: @id})
+  @has_and_belongs_to_many: [
+    {name: 'proposals', class_name: 'Proposal'}
+  ]
+
+  # proposals: ->
+  #   Proposal.where({speaker_ids: @id})
 
   @current: ->
     User.init(Meteor.user()) if Meteor.userId()
