@@ -68,7 +68,7 @@ class @Proposal extends Minimongoid
 @Proposal._collection.allow
   insert: (userId, doc) ->
     # the user must be logged in, and the document must be owned by the user
-    userId and doc.speaker_ids == [userId]
+    userId and _.contains(doc.speaker_ids, userId)
 
   update: (userId, doc, fields, modifier) ->
     # Tags editable by moderator and admins
