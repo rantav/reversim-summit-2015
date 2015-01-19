@@ -6,7 +6,7 @@
       <span class='pull-right label label-info'>Loaded: {{numLoaded}}</span>
     {{/if}}
     {{#each proposals}}
-    <div class="media col-lg-5 proposal-item">
+    <div class="media col-lg-5 proposal-item clearfix">
       {{#each speakers .}}
         <a class="pull-left" href="{{pathFor 'speaker'}}">
           <img class="media-object about-img img-thumbnail img-thumbnail-120" src="{{photo .}}" alt="{{name}}" title="{{name}}" data-toggle='tooltip' data-placement='right'>

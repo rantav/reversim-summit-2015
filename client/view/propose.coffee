@@ -3,9 +3,7 @@ Template.propose.events
     event.preventDefault()
     title = c.find('#title').value
     abstract = c.find('#abstract').value
-    typeArr = $('input[name=type]:checked')
-    if typeArr.length == 1
-      type = typeArr[0].id
+    type = c.$('select.proposal-type').val()
     name = c.find('#name')
     if name then name = name.value
     bio = c.find('#bio')
@@ -22,6 +20,10 @@ Template.propose.events
       Router.go('proposal', {id: p.id})
       alertify.success('Thank you!')
       Meteor.call('sendSubmitEmail', p)
+    else
+      alertify.error("Title is missing", 1000) unless title
+      alertify.error("Abstract is missing", 1000) unless abstract
+      alertify.error("Type is missing", 1000) unless type
 
   'click .sign-in': ->
     ShowLogin()

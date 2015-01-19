@@ -91,13 +91,26 @@ Router.map ->
       items: AgendaItem.all()
     onAfterAction: -> document.title = "Agenda | Reversim Summit 2015"
 
-  @route 'proposal1', _.extend(path: '/proposal/:id/:title*', proposalRouteConfig)
-  @route 'proposal2', _.extend(path: '/proposal/:id', proposalRouteConfig)
+#  @route 'proposal1', _.extend(path: '/proposal/:id/:title*', proposalRouteConfig)
+#  @route 'proposal2', _.extend(path: '/proposal/:id', proposalRouteConfig)
+
+  @route 'proposal',
+    path: '/proposal/:id'
+    waitOn: ->
+      Meteor.subscribe('proposals', {_id: @params.id})
+    template: 'proposal'
+    notFoundTemplate: 'notFound'
+    data: ->
+      proposal = Proposal.find(@params.id)
+      if not proposal then return null
+      document.title = "#{proposal.title} | Reversim Summit 2015"
+      {page: 'proposal', proposal: proposal}
+
 
   @route 'proposals',
     path: '/proposals/:limit?'
     waitOn: ->
-      limit = @params.limit || 10
+      limit = @params.limit || 1000 # TODO: Limit
       q = {}
       if filterType = @params.filterType
         q.type = filterType
@@ -249,7 +262,7 @@ Router.fullPath = (routeName, params) ->
 proposalRouteConfig =
   waitOn: ->
     Meteor.subscribe('proposals', {_id: @params.id})
-  tempalte: 'proposal'
+  template: 'proposal'
   notFoundTemplate: 'notFound'
   data: ->
     proposal = Proposal.find(@params.id)
