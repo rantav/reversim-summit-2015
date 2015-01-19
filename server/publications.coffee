@@ -75,8 +75,8 @@ Meteor.publish "proposals-min", (query, options) ->
 Meteor.publish "proposals", (query, options) ->
   options = {} if not options
   query = {} if not query
-  if not query.id
-    query = _.extend(query, {status: 'accepted'})
+  # if not query.id
+  #   query = _.extend(query, {status: 'accepted'})
   proposals = Proposal.find(query, _.extend(options, {fields: proposalFields(@userId)}))
   userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
   users = User.find({_id: $in: userIds}, {fields: userFields('profile.bio': 1)})
