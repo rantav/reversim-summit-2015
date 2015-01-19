@@ -1,6 +1,8 @@
 <template name='proposalTypes'>
   <select class="form-control proposal-type">
-    <option value="">Select One</option>
+    {{#unless type}}
+      <option value="">Select One</option>
+    {{/unless}}
     {{#each arrayify proposalTypes}}
       <option value="{{key}}" {{selectedStr key ../type}}>{{value}}</option>
     {{/each}}
