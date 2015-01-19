@@ -27,8 +27,8 @@ class @Proposal extends Minimongoid
     full: 'Full'
     ignite: 'Ignite'
     ossil: 'Open Source in Israel'
-    workshop: 'Workshop'
-    keynote: 'Keynote'
+    # workshop: 'Workshop'
+    # keynote: 'Keynote'
 
   delete: ->
     @update(deleted: true)
