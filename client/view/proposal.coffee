@@ -25,8 +25,8 @@ Template.proposal.events
 
 Template.proposal.helpers
   proposal: -> @proposal
-  speakers: -> @proposal.speakers()
-  speakerIds: -> @proposal.speakers().map((s) -> s.id)
+  speakers: -> @proposal?.speakers()
+  speakerIds: -> @proposal?.speakers().map((s) -> s.id)
 
   canEdit: -> canEdit(@proposal)
 
@@ -36,7 +36,6 @@ Template.proposal.helpers
 
 canEdit = (proposal) ->
   Meteor.userId() and (proposal.mine() or User.current().admin())
-  # Meteor.userId() and User.current().admin()
 
 Template.proposal.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()
