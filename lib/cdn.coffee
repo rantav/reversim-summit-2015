@@ -2,7 +2,7 @@ root = exports ? this
 
 root.Cdn = {}
 
-CDN_ROOT = 'dfxrawdv7784e.cloudfront.net'
+CDN_ROOT = 'dpk7qq034rxx8.cloudfront.net'
 
 isLocalhost = Meteor.absoluteUrl().indexOf('http://localhost') == 0
 
