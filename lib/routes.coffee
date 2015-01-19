@@ -110,7 +110,7 @@ Router.map ->
   @route 'proposals',
     path: '/proposals/:limit?'
     waitOn: ->
-      limit = @params.limit || 10
+      limit = @params.limit || 1000 # TODO: Limit
       q = {}
       if filterType = @params.filterType
         q.type = filterType

@@ -12,7 +12,7 @@ Template.proposals.helpers
 
   speakers: (proposal) -> proposal.speakers()
 
-  hasMore: -> true
+  hasMore: -> false # For now...
     # count = Counts.findOne('proposals')
     # count and count.count > Proposal.count()
 
