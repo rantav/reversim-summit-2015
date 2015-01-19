@@ -11,12 +11,15 @@ Template.proposal.events
     abstract = context.find("#abstract-#{@proposal.id}").value
     abstract = Markdown.removeHeadings(abstract)
     type = context.$('select.proposal-type').val()
-    speakerIds = context.find('#speakers').value
-    speakerIds = _.uniq(_.compact(speakerIds.split(',').map((s)->s.trim())))
-    speakersUpdated = (speakerIds.join(',') != @proposal.speaker_ids.join(','))
-    if not (Meteor.userId() in speakerIds) and not User.current().admin()
-      alertify.error("You cannot remove yourself as a speaker!")
-      return
+    speakerIds = context.find('#speakers')?.value
+    if speakerIds
+      speakerIds = _.uniq(_.compact(speakerIds.split(',').map((s)->s.trim())))
+      speakersUpdated = (speakerIds.join(',') != @proposal.speaker_ids.join(','))
+      if not (Meteor.userId() in speakerIds) and not User.current().admin()
+        alertify.error("You cannot remove yourself as a speaker!")
+        return
+    else
+      speakerIds = @proposal.speaker_ids
     @proposal.update(editing: false, title: title, abstract: abstract, type: type, speaker_ids: speakerIds)
     if speakersUpdated
       document.location = document.location
