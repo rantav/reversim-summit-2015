@@ -1,9 +1,8 @@
 <template name='proposalTypes'>
-<div class="btn-group btn-group-sm" data-toggle="buttons">
-  {{#each arrayify proposalTypes}}
-    <label class="btn btn-success {{selectedStr key ../type}}">
-      <input type="radio" name="type" id="{{key}}"/> {{value}}
-    </label>
-  {{/each}}
-</div>
+  <select class="form-control proposal-type">
+    <option value="">Select One</option>
+    {{#each arrayify proposalTypes}}
+      <option value="{{key}}" {{selectedStr key ../type}}>{{value}}</option>
+    {{/each}}
+  </select>
 </template>

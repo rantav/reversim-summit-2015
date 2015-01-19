@@ -10,15 +10,13 @@ Template.proposal.events
     title = context.find("#title-#{@proposal.id}").value
     abstract = context.find("#abstract-#{@proposal.id}").value
     abstract = Markdown.removeHeadings(abstract)
-    typeArr = $('input[name=type]:checked')
+    type = context.$('select.proposal-type').val()
     speakerIds = context.find('#speakers').value
     speakerIds = _.uniq(_.compact(speakerIds.split(',').map((s)->s.trim())))
     speakersUpdated = (speakerIds.join(',') != @proposal.speaker_ids.join(','))
     if not (Meteor.userId() in speakerIds) and not User.current().admin()
       alertify.error("You cannot remove yourself as a speaker!")
       return
-    if typeArr.length == 1
-      type = typeArr[0].id
     @proposal.update(editing: false, title: title, abstract: abstract, type: type, speaker_ids: speakerIds)
     if speakersUpdated
       document.location = document.location
