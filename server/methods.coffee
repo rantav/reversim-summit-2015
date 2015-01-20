@@ -19,7 +19,7 @@ Meteor.methods
         cc: 'rs15team@googlegroups.com'
         from: 'rs15team@googlegroups.com'
         subject: "#{u.name()}, thanks for submitting to Reversim Summit: #{p.title}",
-        text: "Title: #{p.title}\nType: #{p.type}\nAbstract: #{p.abstract}\n\n\nYou may edit your profile here #{userUrl} and edit your submission until Jan 1st here #{proposalUrl}"
+        text: "Title: #{p.title}\nType: #{p.type}\nAbstract: #{p.abstract}\n\n\nYou may edit your profile here #{userUrl} and edit your submission until Jan 27 here: #{proposalUrl}"
     else
       Email.send
         to: 'rs15team@googlegroups.com'
