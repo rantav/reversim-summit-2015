@@ -33,6 +33,11 @@ Handlebars.registerHelper 'twitterShareProposalUrl', (proposal)->
     shareText = "Submitted to reversim conf: \"#{proposal.title}\""
     "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
 
+Handlebars.registerHelper 'fbShareProposalUrl', (proposal)->
+  if proposal
+    url = Router.fullPath('proposal', id: proposal.id)
+    "https://www.facebook.com/dialog/share?app_id=163492177191737&display=popup&href=#{encodeURIComponent(url)}&redirect_uri=http%3A%2F%2Fsummit2015.reversim.com%2F"
+
 
 Handlebars.registerHelper 'staticImg', (path)->
   Cdn.cdnify(path)
