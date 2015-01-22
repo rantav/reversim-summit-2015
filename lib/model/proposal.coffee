@@ -24,7 +24,7 @@ class @Proposal extends Minimongoid
     @where(notDeleted, options)
 
   @types: ->
-    full: 'Full'
+    full: '40min talk'
     ignite: 'Ignite'
     ossil: 'Open Source in Israel'
     # workshop: 'Workshop'
