@@ -36,10 +36,3 @@ Template.proposals.events
     if @filterType
       path += "?filterType=#{@filterType}"
     Router.go(path)
-
-  'click .vote-up': ->
-    u = Meteor.userId()
-    if not u
-      alertify.log('Please login to vote')
-      return
-    @toggleVote()
