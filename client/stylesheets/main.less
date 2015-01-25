@@ -21,10 +21,11 @@ img {
 @media (min-width: 768px) {
   // Background image - not for phones, only larger devices
   body {
-    background-image: url(http://dpk7qq034rxx8.cloudfront.net/img/bg.jpg);
-    background-attachment:fixed;
-    background-position:center center;
-    background-repeat:no-repeat;
+    background: url(http://dpk7qq034rxx8.cloudfront.net/img/bg.jpg) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
     background-color: #D0D0D0;
   }
   @bg-border-radius: 10px;
