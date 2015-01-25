@@ -88,23 +88,22 @@ Router.map ->
 
 
   @route 'proposals',
-    path: '/proposals/:limit?'
+    path: '/proposals'
     waitOn: ->
-      limit = @params.limit || 1000 # TODO: Limit
       q = {}
-      if filterType = @params.filterType
-        q.type = filterType
-      if filterTag = @params.filterTag
-        q.tags = filterTag
-      Meteor.subscribe('proposals', q, {limit: limit, createdAt: -1})
+      q.type = @params.query?.filterType if @params.query?.filterType
+      q.tags = @params.query?.filterTag if @params.query?.filterTag
+      Meteor.subscribe('proposals', q, {createdAt: -1})
     tempalte: 'proposals'
     fastRender: true
     data: ->
       page: 'proposals'
-      proposals: Proposal.all(createdAt: -1)
-      limit: parseInt(@params.limit || 10)
-      filterType: @params.filterType
-      filterTag: @params.filterTag
+      q = {}
+      q.type = @params.query?.filterType if @params.query?.filterType
+      q.tags = @params.query?.filterTag if @params.query?.filterTag
+      proposals: Proposal.where(q, {createdAt: -1})
+      filterType: @params.query?.filterType
+      filterTag: @params.query?.filterTag
     onAfterAction: ->
       document.title = "Proposals | Reversim Summit 2015"
 
