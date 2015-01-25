@@ -1,29 +1,9 @@
 filters =
-  nProgressHook: ->
-    if @ready()
-      NProgress.done()
-    else
-      NProgress.start()
-      @stop()
 
   resetScroll: ->
     scrollTo = window.currentScroll || 0;
     $('body').scrollTop(scrollTo);
     $('body').css("min-height", 0);
-
-# Router.onBeforeAction(filters.nProgressHook, {only: [
-#   'wish'
-#   'wishes',
-#   'proposal',
-#   'proposals',
-#   'speaker',
-#   'speakers',
-#   'sponsors',
-#   'about',
-#   'vote',
-#   'agenda',
-#   'infographics'
-# ]})
 
 Router.configure
   layoutTemplate: 'layout'
@@ -110,7 +90,7 @@ Router.map ->
   @route 'proposals',
     path: '/proposals/:limit?'
     waitOn: ->
-      limit = @params.limit || 10
+      limit = @params.limit || 1000 # TODO: Limit
       q = {}
       if filterType = @params.filterType
         q.type = filterType
