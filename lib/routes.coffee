@@ -7,7 +7,7 @@ Router.configure
   routeControllerNameConverter: 'upperCamelCase'
   # trackPageView: true
 
-seo = (title) ->
+seo = (title, description) ->
   t = []
   if title
     t.push(title)
@@ -16,13 +16,15 @@ seo = (title) ->
   document.title = t
   url = document.location.href
   ogImage = 'http://dpk7qq034rxx8.cloudfront.net/img/ogImage.jpg'
+  if not description
+    description = title
   SEO.set
     title: title
     meta:
-      description: title
+      description: description
     og:
       title: title,
-      description: title
+      description: description
       url: url
       image: ogImage
     fb:
@@ -95,7 +97,7 @@ Router.map ->
     data: ->
       proposal = Proposal.find(@params.id)
       if not proposal then return null
-      seo(proposal.title)
+      seo(proposal.title, proposal.abstract)
       {page: 'proposal', proposal: proposal}
 
 
@@ -158,7 +160,7 @@ Router.map ->
     data: ->
       speaker = User.find(@params.id)
       if not speaker then return null
-      seo(speaker.name())
+      seo(speaker.name(), speaker.bio)
       {page: 'speaker', speaker: speaker}
 
   @route 'speakers',
@@ -199,7 +201,7 @@ Router.map ->
     data: ->
       wish = Wishes.findOne(_id: @params.id)
       if not wish then return null
-      seo(wish.title)
+      seo(wish.title, wish.description)
       {page: 'wish', wish: wish}
 
   @route 's2013',
