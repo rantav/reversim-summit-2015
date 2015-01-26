@@ -44,26 +44,30 @@
         <table>
           {{#each proposals}}
             <tr>
-              <th style='padding: 0 .5em'>
+              <th style='padding: .2em .5em'>
                 <a href='{{pathFor "proposal"}}'>{{title}}</a>
               </th>
               <td>
-                {{#if canSeeResults}}
-                  <span class='badge pull-right'>{{voteCount}}</span>
-                {{/if}}
-                {{#if isAdmin}}
-                  <div class='pull-right'>
-                    Status: {{status}}
-                    <button class='btn btn-danger reject'>next time</button>
-                    <button class='btn btn-success accept'>accept</button>
-                  </div>
-                {{/if}}
-                {{> voteWidget}}
                 <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
                 {{#each tags}}
                   <a class='label label-success label-tag' href='{{filterByTagUrl}}'>{{.}}</a>
                 {{/each}}
               </td>
+              <td>
+                {{> voteWidget}}
+              </td>
+              {{#if canSeeResults}}
+                <td>
+                  <span class='badge pull-right'>{{voteCount}}</span>
+                </td>
+              {{/if}}
+              {{#if isAdmin}}
+                <td>
+                  Status: {{status}}
+                  <button class='btn btn-xs btn-danger reject'>next time</button>
+                  <button class='btn btn-xs btn-success accept'>accept</button>
+                </td>
+              {{/if}}
             </tr>
           {{/each}}
         </table>
