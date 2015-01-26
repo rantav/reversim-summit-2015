@@ -125,10 +125,8 @@ Router.map ->
     fastRender: true
     waitOn: ->
       q = {}
-      if filterType = @params.filterType
-        q.type = filterType
-      if filterTag = @params.filterTag
-        q.tags = filterTag
+      q.type = @params.query?.filterType if @params.query?.filterType
+      q.tags = @params.query?.filterTag if @params.query?.filterTag
       Meteor.subscribe('proposals-min', q)
     tempalte: 'vote'
     data: ->
@@ -144,8 +142,8 @@ Router.map ->
       return {
         page: 'vote'
         speakers: speakers
-        filterType: @params.filterType
-        filterTag: @params.filterTag
+        filterType: @params.query.filterType
+        filterTag: @params.query.filterTag
       }
     onAfterAction: -> seo('Vote')
 

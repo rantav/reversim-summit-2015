@@ -22,7 +22,7 @@ class @User extends Minimongoid
     @proposals = ->
       Proposal.where({speaker_ids: @id})
 
-    @name=  -> @profile.name if @profile
+  name: -> @profile.name if @profile
   bio: -> @profile.bio if @profile
   hasBio: -> !!@profile.bio if @profile
   trackRecord: -> @profile.trackRecord if @profile
