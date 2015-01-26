@@ -1,9 +1,3 @@
-filters =
-
-  resetScroll: ->
-    scrollTo = window.currentScroll || 0;
-    $('body').scrollTop(scrollTo);
-    $('body').css("min-height", 0);
 
 Router.configure
   layoutTemplate: 'layout'
@@ -13,11 +7,7 @@ Router.configure
   routeControllerNameConverter: 'upperCamelCase'
   # trackPageView: true
 
-# Router.onAfterAction(filters.resetScroll,
-#   {except:['wishes', 'proposals', 'speakers', 'vote']});
-
 Router.map ->
-  # @route 'home', path: '/', action: -> @redirect('agenda')
   @route 'home',
     path: '/'
     fastRender: true
