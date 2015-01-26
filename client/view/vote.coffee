@@ -27,9 +27,7 @@ Template.vote.helpers
   totalVotes: -> sum(_.values(countVotes(@speakers)))
 
   name: (userId) ->
-    user = User.find(userId)
-    if user
-      return user.name()
+    User.find(userId)?.name?()
 
   topVoters = ->
     arr = []

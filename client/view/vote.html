@@ -12,42 +12,40 @@
   </p>
   <p>Total votes: <strong>{{totalVotes}}</strong></p>
 {{/if}}
-{{#if canSeeResults}}
-  {{#each speakers}}
-    {{#if shouldDisplay .}}
-      <div class="media col-lg-12 about-person clearfix">
-        <a href='{{pathFor "speaker" id=id name=name}}' class='pull-left'>
-          <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120' data-toggle="tooltip" title="{{name}}"/>
-        </a>
-        <div class="media-body media-body-vote">
-          <h4 class="media-heading">
-            <a href='{{pathFor "speaker"}}'>{{name}}</a>
-          </h4>
-          <dl>
-            {{#each proposals}}
-              <dt>
-                <a href='{{pathFor "proposal"}}'>{{title}}</a>
-                {{#if canSeeResults}}
-                  <span class='badge pull-right'>{{voteCount}}</span>
-                {{/if}}
-                {{#if isAdmin}}
-                  <div class='pull-right'>
-                    Status: {{status}}
-                    <button class='btn btn-danger reject'>next time</button>
-                    <button class='btn btn-success accept'>accept</button>
-                  </div>
-                {{/if}}
-                {{> voteWidget}}
-                <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
-                {{#each tags}}
-                  <a class='label label-success label-tag' href='{{filterByTagUrl}}'>{{.}}</a>
-                {{/each}}
-              </dt>
-            {{/each}}
-          </dl>
-        </div>
+{{#each speakers}}
+  {{#if shouldDisplay .}}
+    <div class="media col-lg-12 about-person clearfix">
+      <a href='{{pathFor "speaker" id=id name=name}}' class='pull-left'>
+        <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120' data-toggle="tooltip" title="{{name}}"/>
+      </a>
+      <div class="media-body media-body-vote">
+        <h4 class="media-heading">
+          <a href='{{pathFor "speaker"}}'>{{name}}</a>
+        </h4>
+        <dl>
+          {{#each proposals}}
+            <dt>
+              <a href='{{pathFor "proposal"}}'>{{title}}</a>
+              {{#if canSeeResults}}
+                <span class='badge pull-right'>{{voteCount}}</span>
+              {{/if}}
+              {{#if isAdmin}}
+                <div class='pull-right'>
+                  Status: {{status}}
+                  <button class='btn btn-danger reject'>next time</button>
+                  <button class='btn btn-success accept'>accept</button>
+                </div>
+              {{/if}}
+              {{> voteWidget}}
+              <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
+              {{#each tags}}
+                <a class='label label-success label-tag' href='{{filterByTagUrl}}'>{{.}}</a>
+              {{/each}}
+            </dt>
+          {{/each}}
+        </dl>
       </div>
-    {{/if}}
-  {{/each}}
-{{/if}}
+    </div>
+  {{/if}}
+{{/each}}
 </template>
