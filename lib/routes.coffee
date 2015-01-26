@@ -1,9 +1,3 @@
-filters =
-
-  resetScroll: ->
-    scrollTo = window.currentScroll || 0;
-    $('body').scrollTop(scrollTo);
-    $('body').css("min-height", 0);
 
 Router.configure
   layoutTemplate: 'layout'
@@ -13,18 +7,39 @@ Router.configure
   routeControllerNameConverter: 'upperCamelCase'
   # trackPageView: true
 
-# Router.onAfterAction(filters.resetScroll,
-#   {except:['wishes', 'proposals', 'speakers', 'vote']});
+seo = (title, description) ->
+  t = []
+  if title
+    t.push(title)
+  t.push('Reversim Summit 2015')
+  t = t.join(' | ')
+  document.title = t
+  url = document.location.href
+  ogImage = 'http://dpk7qq034rxx8.cloudfront.net/img/ogImage.jpg'
+  if not description
+    description = title
+  SEO.set
+    title: title
+    meta:
+      description: description
+    og:
+      title: title,
+      description: description
+      url: url
+      image: ogImage
+    fb:
+      app_id: '163492177191737'
+    twitter:
+      url: url
 
 Router.map ->
-  # @route 'home', path: '/', action: -> @redirect('agenda')
   @route 'home',
     path: '/'
     fastRender: true
     tempalte: 'home'
     data: -> page: 'home'
     onAfterAction: ->
-      document.title = "Reversim Summit 2015"
+      seo('')
 
   @route 'about',
     path: '/about'
@@ -33,7 +48,7 @@ Router.map ->
     tempalte: 'about'
     data: -> page: 'about'
     onAfterAction: ->
-      document.title = "About Reversim Summit 2015"
+      seo('About')
 
   # @route 'infographics', path: '/infographics' # TODO later
 
@@ -42,8 +57,7 @@ Router.map ->
     tempalte: 'register'
     fastRender: true
     data: -> page: 'register'
-    onAfterAction: ->
-      document.title = "Register | Reversim Summit 2015"
+    onAfterAction: -> seo('Register')
 
   @route 'propose',
     path: '/propose'
@@ -51,7 +65,7 @@ Router.map ->
     template: 'propose'
     fastRender: true
     data: -> page: 'propose'
-    onAfterAction: -> document.title = "Propose | Reversim Summit 2015"
+    onAfterAction: -> seo('Propose')
 
   @route 'wishes',
     path: '/wishes'
@@ -59,7 +73,7 @@ Router.map ->
     fastRender: true
     data: -> page: 'wishes'
     waitOn: -> Meteor.subscribe('wishes')
-    onAfterAction: -> document.title = "Wishes | Reversim Summit 2015"
+    onAfterAction: -> seo('Wishes')
 
   @route 'agenda',
     path: '/agenda'
@@ -69,7 +83,7 @@ Router.map ->
     data: ->
       page: 'agenda'
       items: AgendaItem.all()
-    onAfterAction: -> document.title = "Agenda | Reversim Summit 2015"
+    onAfterAction: -> seo('Agenda')
 
 #  @route 'proposal1', _.extend(path: '/proposal/:id/:title*', proposalRouteConfig)
 #  @route 'proposal2', _.extend(path: '/proposal/:id', proposalRouteConfig)
@@ -83,7 +97,7 @@ Router.map ->
     data: ->
       proposal = Proposal.find(@params.id)
       if not proposal then return null
-      document.title = "#{proposal.title} | Reversim Summit 2015"
+      seo(proposal.title, proposal.abstract)
       {page: 'proposal', proposal: proposal}
 
 
@@ -104,8 +118,7 @@ Router.map ->
       proposals: Proposal.where(q, {createdAt: -1})
       filterType: @params.query?.filterType
       filterTag: @params.query?.filterTag
-    onAfterAction: ->
-      document.title = "Proposals | Reversim Summit 2015"
+    onAfterAction: -> seo('Proposals')
 
   @route 'vote',
     path: '/vote'
@@ -134,7 +147,7 @@ Router.map ->
         filterType: @params.filterType
         filterTag: @params.filterTag
       }
-    onAfterAction: -> document.title = "Vote | Reversim Summit 2015"
+    onAfterAction: -> seo('Vote')
 
 
   @route 'speaker',
@@ -147,7 +160,7 @@ Router.map ->
     data: ->
       speaker = User.find(@params.id)
       if not speaker then return null
-      document.title = "#{speaker.name()} | Reversim Summit 2015"
+      seo(speaker.name(), speaker.bio)
       {page: 'speaker', speaker: speaker}
 
   @route 'speakers',
@@ -157,14 +170,14 @@ Router.map ->
     data: ->
       page: 'speakers'
       speakers: User.allSpeakers()
-    onAfterAction: -> document.title = "Speakers | Reversim Summit 2015"
+    onAfterAction: -> seo('Speakers')
 
   @route 'users',
     waitOn: -> Meteor.subscribe('users')
     tempalte: 'users'
     fastRender: true
     data: -> page: 'users'
-    onAfterAction: -> document.title = "Users | Reversim Summit 2015"
+    onAfterAction: -> seo('Users')
 
   @route 'user',
     path: '/user/:id/:name?'
@@ -176,7 +189,7 @@ Router.map ->
     data: ->
       speaker = User.find(@params.id)
       if not speaker then return null
-      document.title = "#{speaker.name()} | Reversim Summit 2015"
+      seo(speaker.name())
       {page: 'speaker', speaker: speaker}
 
   @route 'wish',
@@ -188,7 +201,7 @@ Router.map ->
     data: ->
       wish = Wishes.findOne(_id: @params.id)
       if not wish then return null
-      document.title = "#{wish.title} | Reversim Summit 2015"
+      seo(wish.title, wish.description)
       {page: 'wish', wish: wish}
 
   @route 's2013',
@@ -196,28 +209,28 @@ Router.map ->
     tempalte: 's2013'
     fastRender: true
     data: -> page: 's2013'
-    onAfterAction: -> document.title = "2013 | Reversim Summit"
+    onAfterAction: -> seo('2013')
 
   @route 's2014',
     path: '/s2014'
     tempalte: 's2014'
     fastRender: true
     data: -> page: 's2014'
-    onAfterAction: -> document.title = "2014 | Reversim Summit"
+    onAfterAction: -> seo('2014')
 
   @route 'info',
     path: '/info'
     tempalte: 'info'
     fastRender: true
     data: -> page: 'info'
-    onAfterAction: -> document.title = "Info | Reversim Summit 2015"
+    onAfterAction: -> seo('Info')
 
   @route 'coc',
     path: '/coc'
     tempalte: 'coc'
     fastRender: true
     data: -> page: 'coc'
-    onAfterAction: -> document.title = "Code of Conduct | Reversim Summit 2015"
+    onAfterAction: -> seo('Code of Conduct')
 
   @route 'sponsors',
     waitOn: -> Meteor.subscribe('sponsors')
@@ -226,14 +239,14 @@ Router.map ->
     data: ->
       page: 'sponsors'
       sponsors: _.shuffle(Sponsor.all())
-    onAfterAction: -> document.title = "Sponsors | Reversim Summit 2015"
+    onAfterAction: -> seo('Sponsors')
 
   @route 'community',
     path: '/community'
     tempalte: 'community'
     data: -> page: 'community'
     fastRender: true
-    onAfterAction: -> document.title = "Community | Reversim Summit 2015"
+    onAfterAction: -> seo('Community')
 
 Router.fullPath = (routeName, params) ->
   Meteor.absoluteUrl().slice(0, -1) + Router.path(routeName, params)
