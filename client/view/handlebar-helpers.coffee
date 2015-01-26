@@ -30,7 +30,8 @@ Handlebars.registerHelper 'twitterShareWishUrl', (wish)->
 Handlebars.registerHelper 'twitterShareProposalUrl', (proposal)->
   if proposal
     url = Router.fullPath('proposal', id: proposal.id)
-    shareText = "Submitted to reversim conf: \"#{proposal.title}\""
+    # shareText = "Submitted to reversim conf: \"#{proposal.title}\""
+    shareText = "Vote for: \"#{proposal.title}\""
     "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
 
 Handlebars.registerHelper 'fbShareProposalUrl', (proposal)->
