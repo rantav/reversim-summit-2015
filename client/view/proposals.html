@@ -12,8 +12,11 @@
           <img class="media-object about-img img-thumbnail img-thumbnail-120" src="{{photo .}}" alt="{{name}}" title="{{name}}" data-toggle='tooltip' data-placement='right'>
         </a>
       {{/each}}
-      <a class='share-twitter no-underline pull-right' href="{{twitterShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share' data-placement='left'>
+      <a class='share-twitter no-underline pull-right' href="{{twitterShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share on Twitter' data-placement='left'>
         <i class='fa fa-twitter'></i>
+      </a>
+      <a class='share-facebook no-underline pull-right' href="{{fbShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share on Facebook' data-placement='left'>
+        <i class='fa fa-facebook'></i>
       </a>
       {{> voteWidget}}
       <div class="media-body">
