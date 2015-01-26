@@ -14,6 +14,21 @@ seo = (title) ->
   t.push('Reversim Summit 2015')
   t = t.join(' | ')
   document.title = t
+  url = document.location.href
+  ogImage = 'http://dpk7qq034rxx8.cloudfront.net/img/ogImage.jpg'
+  SEO.set
+    title: title
+    meta:
+      description: title
+    og:
+      title: title,
+      description: title
+      url: url
+      image: ogImage
+    fb:
+      app_id: '163492177191737'
+    twitter:
+      url: url
 
 Router.map ->
   @route 'home',
