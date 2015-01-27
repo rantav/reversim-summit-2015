@@ -3,6 +3,7 @@
   },
   "public": {
     "votingEnabled": true,
-    "cfpEnabled": false
+    "cfpEnabled": false,
+    "wishEnabled": false
   }
 }

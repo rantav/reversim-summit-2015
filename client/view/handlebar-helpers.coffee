@@ -70,5 +70,5 @@ Handlebars.registerHelper 'votingEnabled', ->
 Handlebars.registerHelper 'cfpEnabled', ->
   Meteor.settings.public.cfpEnabled
 
-Handlebars.registerHelper 'wishlistEnabled', ->
-  Meteor.settings.public.wishlistEnabled
+Handlebars.registerHelper 'wishEnabled', ->
+  Meteor.settings.public.wishEnabled
