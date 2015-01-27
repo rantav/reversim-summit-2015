@@ -1,23 +1,23 @@
 <template name='vote'>
-<!--
-<h1>Voting is closed. Thank you!</h1>
--->
-
-<h1>Vote</h1>
-<p>Please help us select content by casting your vote</p>
-<dl>
-  <dt>How many times may I vote?</dt>
-  <dd>As many as you like. Voting means "I'm interested in this topic" or "I'd like to see this person speaking" you may vote for as many proposals you find interesting. The result will help us select</dd>
-  <dt>Can I change my mind after voting?</dt>
-  <dd>Yes. Simply click the same icon in order to unvote.</dd>
-  <dt>Who can see my vote?</dt>
-  <dd>Voting is anonymous and results <strong>will not</strong> be public. Only moderators will have access to the aggregate results</dd>
-  <dt>Until when is the voting open?</dt>
-  <dd><h3>Voting will close Jan 31</h3></dd>
-</dl>
-{{#unless loggedIn}}
-  <p class='lead'><button class='btn btn-default sign-in'>Please log in to vote</button></p>
-{{/unless}}
+{{#if votingEnabled}}
+  <h1>Vote</h1>
+  <p>Please help us select content by casting your vote</p>
+  <dl>
+    <dt>How many times may I vote?</dt>
+    <dd>As many as you like. Voting means "I'm interested in this topic" or "I'd like to see this person speaking" you may vote for as many proposals you find interesting. The result will help us select</dd>
+    <dt>Can I change my mind after voting?</dt>
+    <dd>Yes. Simply click the same icon in order to unvote.</dd>
+    <dt>Who can see my vote?</dt>
+    <dd>Voting is anonymous and results <strong>will not</strong> be public. Only moderators will have access to the aggregate results</dd>
+    <dt>Until when is the voting open?</dt>
+    <dd><h3>Voting will close Jan 31</h3></dd>
+  </dl>
+  {{#unless loggedIn}}
+    <p class='lead'><button class='btn btn-default sign-in'>Please log in to vote</button></p>
+  {{/unless}}
+{{else}}
+  <h1>Voting is closed. Thank you!</h1>
+{{/if}}
 
 {{#if isAdmin}}
   <p>Unique voters: <strong>{{votersCount}}</strong></p>
@@ -31,48 +31,50 @@
   </p>
   <p>Total votes: <strong>{{totalVotes}}</strong></p>
 {{/if}}
-{{#each speakers}}
-  {{#if shouldDisplay .}}
-    <div class="media col-lg-12 about-person clearfix">
-      <a href='{{pathFor "speaker" id=id name=name}}' class='pull-left'>
-        <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120' data-toggle="tooltip" title="{{name}}"/>
-      </a>
-      <div class="media-body media-body-vote">
-        <h4 class="media-heading">
-          <a href='{{pathFor "speaker"}}'>{{name}}</a>
-        </h4>
-        <table>
-          {{#each proposals}}
-            <tr>
-              <th style='padding: .2em .5em'>
-                <a href='{{pathFor "proposal"}}'>{{title}}</a>
-              </th>
-              <td>
-                <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
-                {{#each tags}}
-                  <a class='label label-success label-tag' href='{{filterByTagUrl}}'>{{.}}</a>
-                {{/each}}
-              </td>
-              <td>
-                {{> voteWidget}}
-              </td>
-              {{#if canSeeResults}}
-                <td style='padding: 0 4px'>
-                  <span class='badge'>votes: {{voteCount}}</span>
-                </td>
-              {{/if}}
-              {{#if isAdmin}}
+{{#if or votingEnabled isAdmin}}
+  {{#each speakers}}
+    {{#if shouldDisplay .}}
+      <div class="media col-lg-12 about-person clearfix">
+        <a href='{{pathFor "speaker" id=id name=name}}' class='pull-left'>
+          <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120' data-toggle="tooltip" title="{{name}}"/>
+        </a>
+        <div class="media-body media-body-vote">
+          <h4 class="media-heading">
+            <a href='{{pathFor "speaker"}}'>{{name}}</a>
+          </h4>
+          <table>
+            {{#each proposals}}
+              <tr>
+                <th style='padding: .2em .5em'>
+                  <a href='{{pathFor "proposal"}}'>{{title}}</a>
+                </th>
                 <td>
-                  Status: {{status}}
-                  <button class='btn btn-xs btn-danger reject'>next time</button>
-                  <button class='btn btn-xs btn-success accept'>accept</button>
+                  <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
+                  {{#each tags}}
+                    <a class='label label-success label-tag' href='{{filterByTagUrl}}'>{{.}}</a>
+                  {{/each}}
                 </td>
-              {{/if}}
-            </tr>
-          {{/each}}
-        </table>
+                <td>
+                  {{> voteWidget}}
+                </td>
+                {{#if canSeeResults}}
+                  <td style='padding: 0 4px'>
+                    <span class='badge'>votes: {{voteCount}}</span>
+                  </td>
+                {{/if}}
+                {{#if isAdmin}}
+                  <td>
+                    Status: {{status}}
+                    <button class='btn btn-xs btn-danger reject'>next time</button>
+                    <button class='btn btn-xs btn-success accept'>accept</button>
+                  </td>
+                {{/if}}
+              </tr>
+            {{/each}}
+          </table>
+        </div>
       </div>
-    </div>
-  {{/if}}
-{{/each}}
+    {{/if}}
+  {{/each}}
+{{/if}}
 </template>

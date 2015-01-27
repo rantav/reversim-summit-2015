@@ -11,11 +11,17 @@
       <li><em>Registration</em> starts <strong>Feb 18</strong></li>
       <li><em>Conference</em> <strong>March 11-12</strong></li>
     </ul>
-    <h2>Voting is open</h2>
-    <p class='lead'>
-        Voting is open until Jan 31. <a href="/vote" class="btn btn-lg btn-info">Vote here</a>
-    </p>
-    <p>The CFP is now closed</p>
+    {{#if votingEnabled}}
+      <h2>Voting is open</h2>
+      <p class='lead'>
+          Voting is open until Jan 31. <a href="/vote" class="btn btn-lg btn-info">Vote here</a>
+      </p>
+    {{/if}}
+    {{#if cfpEnabled}}
+    {{else}}
+      <p>The CFP is now closed</p>
+    {{/if}}
+
     {{!
     <p>
       <a class="btn btn-success" href="https://twitter.com/reversim">
