@@ -36,7 +36,7 @@ Template.proposal.helpers
   editMode: -> @proposal?.editing and canEdit(@proposal)
 
 canEdit = (proposal) ->
-  Meteor.userId() and (proposal.mine() or User.current().admin())
+  Meteor.userId() and ((proposal.mine() and Meteor.settings.public.cfpEnabled) or User.current().admin())
 
 Template.proposal.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()

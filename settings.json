@@ -1,6 +1,9 @@
 {
   "private": {
   },
-  "public":{
+  "public": {
+    "votingEnabled": false,
+    "cfpEnabled": true,
+    "wishEnabled": false
   }
 }

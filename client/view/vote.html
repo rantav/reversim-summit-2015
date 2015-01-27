@@ -1,5 +1,24 @@
 <template name='vote'>
-<h1>Voting is closed. Thank you!</h1>
+{{#if votingEnabled}}
+  <h1>Vote</h1>
+  <p>Please help us select content by casting your vote</p>
+  <dl>
+    <dt>How many times may I vote?</dt>
+    <dd>As many as you like. Voting means "I'm interested in this topic" or "I'd like to see this person speaking" you may vote for as many proposals you find interesting. The result will help us select</dd>
+    <dt>Can I change my mind after voting?</dt>
+    <dd>Yes. Simply click the same icon in order to unvote.</dd>
+    <dt>Who can see my vote?</dt>
+    <dd>Voting is anonymous and results <strong>will not</strong> be public. Only moderators will have access to the aggregate results</dd>
+    <dt>Until when is the voting open?</dt>
+    <dd><h3>Voting will close Jan 31</h3></dd>
+  </dl>
+  {{#unless loggedIn}}
+    <p class='lead'><button class='btn btn-default sign-in'>Please log in to vote</button></p>
+  {{/unless}}
+{{else}}
+  <h1>Voting is closed. Thank you!</h1>
+{{/if}}
+
 {{#if isAdmin}}
   <p>Unique voters: <strong>{{votersCount}}</strong></p>
   <p>Average votes per voters: <strong>{{votersAverage}}</strong></p>
@@ -12,7 +31,7 @@
   </p>
   <p>Total votes: <strong>{{totalVotes}}</strong></p>
 {{/if}}
-{{#if canSeeResults}}
+{{#if or votingEnabled isAdmin}}
   {{#each speakers}}
     {{#if shouldDisplay .}}
       <div class="media col-lg-12 about-person clearfix">
@@ -23,28 +42,36 @@
           <h4 class="media-heading">
             <a href='{{pathFor "speaker"}}'>{{name}}</a>
           </h4>
-          <dl>
+          <table>
             {{#each proposals}}
-              <dt>
-                <a href='{{pathFor "proposal"}}'>{{title}}</a>
+              <tr>
+                <th style='padding: .2em .5em'>
+                  <a href='{{pathFor "proposal"}}'>{{title}}</a>
+                </th>
+                <td>
+                  <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
+                  {{#each tags}}
+                    <a class='label label-success label-tag' href='{{filterByTagUrl}}'>{{.}}</a>
+                  {{/each}}
+                </td>
+                <td>
+                  {{> voteWidget}}
+                </td>
                 {{#if canSeeResults}}
-                  <span class='badge pull-right'>{{voteCount}}</span>
+                  <td style='padding: 0 4px'>
+                    <span class='badge'>votes: {{voteCount}}</span>
+                  </td>
                 {{/if}}
                 {{#if isAdmin}}
-                  <div class='pull-right'>
+                  <td>
                     Status: {{status}}
-                    <button class='btn btn-danger reject'>next time</button>
-                    <button class='btn btn-success accept'>accept</button>
-                  </div>
+                    <button class='btn btn-xs btn-danger reject'>next time</button>
+                    <button class='btn btn-xs btn-success accept'>accept</button>
+                  </td>
                 {{/if}}
-                {{> voteWidget}}
-                <a class='label label-{{type}}' href='{{filterByTypeUrl}}'>{{typeName}}</a>
-                {{#each tags}}
-                  <a class='label label-success label-tag' href='{{filterByTagUrl}}'>{{.}}</a>
-                {{/each}}
-              </dt>
+              </tr>
             {{/each}}
-          </dl>
+          </table>
         </div>
       </div>
     {{/if}}

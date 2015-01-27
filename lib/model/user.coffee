@@ -15,6 +15,13 @@ class @User extends Minimongoid
   @allModerators: ->
     User.where('roles.moderator': true)
 
+  constructor: (@data) ->
+    super(@data)
+    # Override the auto functions from minimongoid.
+    # They don't function so well in this case...
+    @proposals = ->
+      Proposal.where({speaker_ids: @id})
+
   name: -> @profile.name if @profile
   bio: -> @profile.bio if @profile
   hasBio: -> !!@profile.bio if @profile

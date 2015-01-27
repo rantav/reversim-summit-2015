@@ -1,8 +1,18 @@
 <template name='proposal'>
+  {{#if votingEnabled}}
+    {{#with proposal}}
+      <h2>
+        {{> voteWidget}}
+      </h2>
+    {{/with}}
+  {{/if}}
+  <a class='share-twitter no-underline pull-right share-large' href="{{twitterShareProposalUrl proposal}}" target="_blank">
+    <i class='fa fa-twitter-square fa-2x'></i>
+  </a>
+  <a class='share-facebook no-underline pull-right share-large' href="{{fbShareProposalUrl proposal}}" target="_blank">
+    <i class='fa fa-facebook-square fa-2x'></i>
+  </a>
 <h2>
-  {{#with proposal}}
-    {{> voteWidget}}
-  {{/with}}
   <span class='pre-header'>Title:</span>
   {{#if editMode}}
     <input value='{{proposal.title}}' class="edit-inline form-control" id='title-{{proposal.id}}'/>
@@ -66,14 +76,5 @@
       </button>
     {{/if}}
   {{/if}}
-  <a class='share-twitter no-underline' href="{{twitterShareProposalUrl proposal}}" target="_blank">
-    <i class='fa fa-twitter fa-2x'></i>
-  </a>
-  <!--
-  <a class='share-facebook no-underline' href="{{fbShareProposalUrl proposal}}" target="_blank">
-    <i class='fa fa-facebook fa-2x'></i>
-  </a>
-  -->
-
 </div>
 </template>

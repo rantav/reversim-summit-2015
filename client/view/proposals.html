@@ -12,12 +12,17 @@
           <img class="media-object about-img img-thumbnail img-thumbnail-120" src="{{photo .}}" alt="{{name}}" title="{{name}}" data-toggle='tooltip' data-placement='right'>
         </a>
       {{/each}}
+      <a class='share-small share-twitter no-underline pull-right' href="{{twitterShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share on Twitter' data-placement='left'>
+        <i class='fa fa-twitter-square'></i>
+      </a>
+      <a class='share-small share-facebook no-underline pull-right' href="{{fbShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share on Facebook' data-placement='left'>
+        <i class='fa fa-facebook-square'></i>
+      </a>
+      {{#if votingEnabled}}
+        {{> voteWidget}}
+      {{/if}}
       <div class="media-body">
         <div class="media-heading">
-          <a class='share-twitter no-underline pull-right' href="{{twitterShareProposalUrl .}}" target="_blank" data-toggle="tooltip" title='Share' data-placement='left'>
-            <i class='fa fa-twitter'></i>
-          </a>
-          {{> voteWidget}}
           <h4>
             <a href='{{pathFor "proposal"}}'>{{title}}</a>
           </h4>
