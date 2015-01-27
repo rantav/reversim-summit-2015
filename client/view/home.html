@@ -18,10 +18,17 @@
       </p>
     {{/if}}
     {{#if cfpEnabled}}
+      <p class="lead">
+        You may now <a href='/propose' class='btn btn-success'>Submit a proposal</a>
+      </p>
     {{else}}
       <p>The CFP is now closed</p>
     {{/if}}
-
+    {{#if wishEnabled}}
+      <p class="lead">
+        You may <a href='/wishes' class='btn btn-success'>Make a wish or Vote</a>
+      </p>
+    {{/if}}
     {{!
     <p>
       <a class="btn btn-success" href="https://twitter.com/reversim">
