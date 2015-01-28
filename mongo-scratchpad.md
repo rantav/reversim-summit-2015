@@ -1,3 +1,17 @@
+# Submitters emails:
+db.users.find({"profile.submitted": true}, {"services.google.email": 1, "services.facebook.email": 1}).forEach(
+  function(u) {
+    if (u.services.google) {
+      print(u.services.google.email);
+    } else if (u.services.facebook) {
+      print(u.services.facebook.email);
+    }
+  })
+
+
+# Mark a user as submitter:
+db.users.update({_id: "BDDJgqvaALSoyyrpR"}, {$set: {"profile.submitted": true}})
+
 # Add comments to wishes
 ```
 db.wishes.find().forEach(function(w){
