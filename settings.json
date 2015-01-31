@@ -2,7 +2,7 @@
   "private": {
   },
   "public": {
-    "votingEnabled": true,
+    "votingEnabled": false,
     "cfpEnabled": false,
     "wishEnabled": false
   }
