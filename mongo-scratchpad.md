@@ -79,7 +79,7 @@ db.proposals.find().forEach(function(p){
 
 Vote counts:
 ```
-db.proposals.find().sort({createdAt: -1}).forEach(function(p) {
+db.proposals.find({$or: [{deleted: {$exists: false}}, {deleted: false}]}).sort({_id: 1}).forEach(function(p) {
   votes = p.votes;
   voteCount = 0;
   for (v in votes) {
