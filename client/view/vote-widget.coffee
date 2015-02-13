@@ -5,7 +5,7 @@ Template.voteWidget.destroyed = ->
   @$('[data-toggle="tooltip"]').tooltip('destroy')
 
 Template.voteWidget.helpers
-  votingEnabled: -> true
+  votingEnabled: -> Meteor.settings.votingEnabled
 
 Template.voteWidget.events
   'click .vote-up': ->
