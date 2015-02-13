@@ -76,8 +76,8 @@ Meteor.publish "proposals", (query, options) ->
   options = {} if not options
   query = {} if not query
   query = _.extend(query, notDeletedPred)
-  # if not query.id
-  #   query = _.extend(query, {status: 'accepted'})
+  if not query.id
+    query = _.extend(query, {status: 'accepted'})
   proposals = Proposal.find(query, _.extend(options, {fields: proposalFields(@userId)}))
   userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
   users = User.find({_id: $in: userIds}, {fields: userFields('profile.bio': 1)})
