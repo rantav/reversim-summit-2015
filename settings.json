@@ -4,6 +4,7 @@
   "public": {
     "votingEnabled": false,
     "cfpEnabled": false,
-    "wishEnabled": false
+    "wishEnabled": false,
+    "speakersCanEditProposals": true
   }
 }
