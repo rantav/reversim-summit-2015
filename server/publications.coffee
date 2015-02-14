@@ -76,7 +76,6 @@ Meteor.publish "proposals", (query, options) ->
   options = {} if not options
   query = {} if not query
   query = _.extend(query, notDeletedPred)
-  console.log(query)
   if not query._id
     query = _.extend(query, {status: 'accepted'})
   proposals = Proposal.find(query, _.extend(options, {fields: proposalFields(@userId)}))
