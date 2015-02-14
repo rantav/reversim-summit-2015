@@ -2,6 +2,7 @@
   {{#if canSee}}
     <h3 class='pull-right'>Hashtag: <a href='https://twitter.com/search?q=%23reversim'>#reversim</a></h3>
     <h1>Agenda</h1>
+    {{!
     <div>
       <p>We have a google calendar:
         <a target="_blank" href="https://www.google.com/calendar/feeds/7hvvqhfn34nc1ptchdsthud80o%40group.calendar.google.com/public/basic">
@@ -12,16 +13,16 @@
         </a>
       </p>
     </div>
+    }}
     <table class='table table-bordered agenda'>
       <thead>
         <tr>
-          <th colspan='5' class='text-center'><h2>Day 1 (Feb 24)</h2></th>
+          <th colspan='3' class='text-center'><h2>Day 1 (Mar 11)</h2></th>
         </tr>
         <tr>
           <th style='width:5%'>Time</th>
           <th style='width:30%'>Class 1 (main hall)</th>
-          <th style='width:30%'>Class 2 (classroom)</th>
-          <th style='width:30%'>Class 3 (hack room)</th>
+          <th style='width:30%'>Class 2 (second hall)</th>
         </tr>
       </thead>
       <tbody>
@@ -33,13 +34,12 @@
     <table class='table table-bordered agenda'>
       <thead>
         <tr>
-          <th colspan='5' class='text-center'><h2>Day 2 (Feb 25)</h2></th>
+          <th colspan='3' class='text-center'><h2>Day 2 (Mar 12)</h2></th>
         </tr>
         <tr>
           <th style='width:5%'>Time</th>
           <th style='width:30%'>Class 1 (main hall)</th>
-          <th style='width:30%'>Class 2 (classroom)</th>
-          <th style='width:30%'>Class 3 (hack room)</th>
+          <th style='width:30%'>Class 2 (second hall)</th>
         </tr>
       </thead>
       <tbody>
@@ -54,25 +54,19 @@
       <form class="form-inline" role="form" id='add-form'>
         <div class="form-group col-xs-2">
           <label class="sr-only" for="time">Time</label>
-          <input class="form-control input-sm" id="time" placeholder="Time and Date" value="02/24/14 09:00:00">
+          <input class="form-control input-sm" id="time" placeholder="Time and Date" value="03/11/15 10:00:00">
         </div>
         <div class="form-group col-xs-2">
           <label class="sr-only" for="class1">Class 1</label>
           <input class="form-control input-sm" id="class1" placeholder="Class 1">
           <label class="sr-only" for="icon1">icon 1</label>
-          <input class="form-control input-sm" id="icon1" placeholder="e.g. calendar">
+          <input class="form-control input-sm" id="icon1" placeholder="fa icon, e.g. calendar">
         </div>
         <div class="form-group col-xs-2">
           <label class="sr-only" for="class2">Class 2</label>
           <input class="form-control input-sm" id="class2" placeholder="Class 2">
           <label class="sr-only" for="icon2">icon 2</label>
-          <input class="form-control input-sm" id="icon2" placeholder="e.g. calendar">
-        </div>
-        <div class="form-group col-xs-2">
-          <label class="sr-only" for="class3">Class 3</label>
-          <input class="form-control input-sm" id="class3" placeholder="Class 3">
-          <label class="sr-only" for="icon3">icon 3</label>
-          <input class="form-control input-sm" id="icon3" placeholder="e.g. calendar">
+          <input class="form-control input-sm" id="icon2" placeholder="fa icon, e.g. calendar">
         </div>
         <button type="submit" class="btn btn-default input-sm">Add</button>
       </form>

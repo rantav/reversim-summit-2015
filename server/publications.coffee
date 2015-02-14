@@ -90,8 +90,7 @@ Meteor.publish "agenda", ->
   items = AgendaItem.find()
   proposalIds = _.uniq(_.compact(_.flatten(items.map((i) ->
     [split(i.class1),
-     split(i.class2),
-     split(i.class3)]))))
+     split(i.class2)]))))
   proposals = Proposal.find({_id: $in: proposalIds}, {fields: proposalFields(@userId, true)})
   userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
   users = User.find({_id: $in: userIds}, {fields: userFields()})

@@ -1,4 +1,4 @@
-mid = new Date('02/25/2014 00:00:00')
+mid = new Date('03/12/2015 00:00:00')
 
 Template.agenda.helpers
   day1:  ->
@@ -7,9 +7,9 @@ Template.agenda.helpers
   day2: ->
     _.sortBy(@items.filter((i) -> i.time > mid), (i) -> i.time)
 
-  canSee:  -> true
-    # u = User.current()
-    # u and (u.admin() or u.moderator())
+  canSee:  ->
+    u = User.current()
+    u and (u.admin() or u.moderator())
 
   canEdit:  ->
     u = User.current()
@@ -23,8 +23,6 @@ Template.agenda.events
     icon1 = context.find('#icon1').value
     class2 = context.find('#class2').value
     icon2 = context.find('#icon2').value
-    class3 = context.find('#class3').value
-    icon3 = context.find('#icon3').value
     if not time then return
     time = new Date(time)
     if not time
@@ -33,11 +31,9 @@ Template.agenda.events
     AgendaItem.create
       time: time
       class1: class1
-      class2: class2
-      class3: class3
       icon1: icon1
+      class2: class2
       icon2: icon2
-      icon3: icon3
 
   'click #edit': ->
     Session.set('editingAgenda', not Session.get('editingAgenda'))
