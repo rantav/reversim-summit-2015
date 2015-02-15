@@ -13,17 +13,16 @@ seo = (title, description) ->
     t.push(title)
   t.push('Reversim Summit 2015')
   t = t.join(' | ')
-  document.title = t
   url = document.location.href
   ogImage = 'http://dpk7qq034rxx8.cloudfront.net/img/ogImage.jpg'
   if not description
     description = title
   SEO.set
-    title: title
+    title: t
     meta:
       description: description
     og:
-      title: title,
+      title: t,
       description: description
       url: url
       image: ogImage
