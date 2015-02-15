@@ -2,7 +2,7 @@
 <h1>Our awesome speakers are:</h1>
 {{#each speakers}}
   {{#if shouldDisplay .}}
-    <div class="media col-lg-6 about-person">
+    <div class="media col-lg-6 about-person clearfix">
       <a href='{{pathFor "speaker" id=id name=name}}' class='pull-left'>
         <img src='{{photo .}}' class='about-img img-thumbnail img-thumbnail-120' data-toggle="tooltip" title="{{name}}"/>
       </a>

@@ -18,9 +18,15 @@
       <a href="{{pathFor 'vote'}}"><strong>Vote</strong></a>
      </li>
    {{/if}}
-   <li class="{{activeClass 'proposals'}}">
-    <a href="{{pathFor 'proposals'}}">Proposals</a>
-  </li>
+   {{#if proposalsSelected}}
+     <li class="{{activeClass 'sessions'}}">
+       <a href="{{pathFor 'sessions'}}">Sessions</a>
+     </li>
+   {{else}}
+     <li class="{{activeClass 'proposals'}}">
+       <a href="{{pathFor 'proposals'}}">Proposals</a>
+     </li>
+   {{/if}}
   <li class="{{activeClass 'speakers'}}">
     <a href="{{pathFor 'speakers'}}">Speakers</a>
   </li>

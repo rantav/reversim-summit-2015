@@ -72,3 +72,6 @@ Handlebars.registerHelper 'cfpEnabled', ->
 
 Handlebars.registerHelper 'wishEnabled', ->
   Meteor.settings.public.wishEnabled
+
+Handlebars.registerHelper 'proposalsSelected', ->
+  Meteor.settings.public.proposalsSelected
