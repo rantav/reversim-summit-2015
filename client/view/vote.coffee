@@ -26,12 +26,7 @@ Template.vote.helpers
 
   totalVotes: -> sum(_.values(countVotes(@speakers)))
 
-  name: (userId) ->
-    user = User.find(userId)
-    if user
-      return user.name()
-
-  topVoters = ->
+  topVoters: ->
     arr = []
     for voter, votes of countVotes(@speakers)
       arr.push({voter: voter, votes: votes})
@@ -42,7 +37,7 @@ Template.vote.helpers
       if user then v.name = user.name()
     arr
 
-  canSeeResults = ->
+  canSeeResults: ->
     u = User.current()
     u and (u.admin() or u.moderator())
 

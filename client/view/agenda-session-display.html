@@ -16,7 +16,7 @@
           </div>
         {{/with}}
       {{else}}
-        <div class='clearfix'>
+        <div class='{{#unless hallOfShame}}clearfix{{/unless}}'>
           {{.}}
           {{#if hallOfShame}}
             <img src='{{staticImg "/img/hall_shame.png"}}' class='img-circle pull-right'>

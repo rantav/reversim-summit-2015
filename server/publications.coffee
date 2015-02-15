@@ -76,8 +76,8 @@ Meteor.publish "proposals", (query, options) ->
   options = {} if not options
   query = {} if not query
   query = _.extend(query, notDeletedPred)
-  # if not query.id
-  #   query = _.extend(query, {status: 'accepted'})
+  if not query._id
+    query = _.extend(query, {status: 'accepted'})
   proposals = Proposal.find(query, _.extend(options, {fields: proposalFields(@userId)}))
   userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
   users = User.find({_id: $in: userIds}, {fields: userFields('profile.bio': 1)})
@@ -90,8 +90,7 @@ Meteor.publish "agenda", ->
   items = AgendaItem.find()
   proposalIds = _.uniq(_.compact(_.flatten(items.map((i) ->
     [split(i.class1),
-     split(i.class2),
-     split(i.class3)]))))
+     split(i.class2)]))))
   proposals = Proposal.find({_id: $in: proposalIds}, {fields: proposalFields(@userId, true)})
   userIds = _.flatten(proposals.map((p) -> p.speaker_ids))
   users = User.find({_id: $in: userIds}, {fields: userFields()})

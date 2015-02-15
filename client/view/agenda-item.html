@@ -32,20 +32,6 @@
         {{/if}}
       </td>
     {{/if}}
-    {{#if class3}}
-      <td>
-        {{#if icon3}}
-          <i class="fa fa-{{icon3}} fa-3x pull-left"></i>
-        {{/if}}
-        {{#with class3}}
-          {{> agendaSessionDisplay}}
-        {{/with}}
-        {{#if editing}}
-          <input class='form-control class3' value='{{class3}}'/>
-          <input class='form-control icon3' value='{{icon3}}' placeholder='icon'/>
-        {{/if}}
-      </td>
-    {{/if}}
     {{#if editing}}
       <td>
         <button class='btn btn-danger btn-sm del'>Delete</button>

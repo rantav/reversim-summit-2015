@@ -8,15 +8,28 @@
     <a href="{{pathFor 'agenda'}}">Agenda</a>
   </li>
   -->
-  <li class="{{activeClass 'propose'}}"><a href="{{pathFor 'propose'}}"><strong>Propose</strong></a></li>
-  <li class="{{activeClass 'proposals'}}">
-    <a href="{{pathFor 'proposals'}}">Proposals</a>
-  </li>
-  <!--
+  {{#if cfpEnabled}}
+    <li class="{{activeClass 'propose'}}">
+      <a href="{{pathFor 'propose'}}"><strong>Propose</strong></a>
+    </li>
+  {{/if}}
+  {{#if votingEnabled}}
+    <li class="{{activeClass 'vote'}}">
+      <a href="{{pathFor 'vote'}}"><strong>Vote</strong></a>
+     </li>
+   {{/if}}
+   {{#if proposalsSelected}}
+     <li class="{{activeClass 'sessions'}}">
+       <a href="{{pathFor 'sessions'}}">Sessions</a>
+     </li>
+   {{else}}
+     <li class="{{activeClass 'proposals'}}">
+       <a href="{{pathFor 'proposals'}}">Proposals</a>
+     </li>
+   {{/if}}
   <li class="{{activeClass 'speakers'}}">
     <a href="{{pathFor 'speakers'}}">Speakers</a>
   </li>
-  -->
   {{#if canSeeHidden}}
     <li class="{{activeClass 'users'}}">
       <a href="{{pathFor 'users'}}">Users <small>({{users}})</small></a>

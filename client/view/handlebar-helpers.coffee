@@ -30,7 +30,8 @@ Handlebars.registerHelper 'twitterShareWishUrl', (wish)->
 Handlebars.registerHelper 'twitterShareProposalUrl', (proposal)->
   if proposal
     url = Router.fullPath('proposal', id: proposal.id)
-    shareText = "Submitted to reversim conf: \"#{proposal.title}\""
+    # shareText = "Submitted to reversim conf: \"#{proposal.title}\""
+    shareText = "Vote for: \"#{proposal.title}\""
     "https://twitter.com/share?url=#{encodeURIComponent(url)}&text=#{encodeURIComponent(shareText)}&via=reversim"
 
 Handlebars.registerHelper 'fbShareProposalUrl', (proposal)->
@@ -45,7 +46,7 @@ Handlebars.registerHelper 'staticImg', (path)->
 Handlebars.registerHelper 'marked', (text) ->
   if text then marked(text)
 
-# Help handelbars iterate over objects by turning them into arrays
+# Help handlebars iterate over objects by turning them into arrays
 Handlebars.registerHelper 'arrayify', (obj) ->
   ({key: key, value: value} for key, value of obj)
 
@@ -58,3 +59,19 @@ Handlebars.registerHelper 'proposalTypes', ->
 
 Handlebars.registerHelper 'pathWish', (obj) ->
   Router.path('wish', {id: obj.hash.id, title: obj.hash.title})
+
+Handlebars.registerHelper 'or', ->
+  args = _.first(arguments, arguments.length - 1)
+  _.any(args, (a) -> !!a)
+
+Handlebars.registerHelper 'votingEnabled', ->
+  Meteor.settings.public.votingEnabled
+
+Handlebars.registerHelper 'cfpEnabled', ->
+  Meteor.settings.public.cfpEnabled
+
+Handlebars.registerHelper 'wishEnabled', ->
+  Meteor.settings.public.wishEnabled
+
+Handlebars.registerHelper 'proposalsSelected', ->
+  Meteor.settings.public.proposalsSelected

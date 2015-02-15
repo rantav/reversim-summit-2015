@@ -1,6 +1,11 @@
 {
   "private": {
   },
-  "public":{
+  "public": {
+    "votingEnabled": false,
+    "cfpEnabled": false,
+    "wishEnabled": false,
+    "speakersCanEditProposals": true,
+    "proposalsSelected": true
   }
 }
