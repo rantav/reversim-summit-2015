@@ -36,7 +36,6 @@ Router.map ->
   @route 'home',
     path: '/'
     fastRender: true
-    tempalte: 'home'
     data: -> page: 'home'
     onAfterAction: ->
       seo('')
@@ -45,7 +44,6 @@ Router.map ->
     path: '/about'
     fastRender: true
     waitOn: -> Meteor.subscribe('moderators')
-    tempalte: 'about'
     data: -> page: 'about'
     onAfterAction: ->
       seo('About')
@@ -54,7 +52,6 @@ Router.map ->
 
   @route 'register',
     path: '/register'
-    tempalte: 'register'
     fastRender: true
     data: -> page: 'register'
     onAfterAction: -> seo('Register')
@@ -69,7 +66,6 @@ Router.map ->
 
   @route 'wishes',
     path: '/wishes'
-    tempalte: 'wishes'
     fastRender: true
     data: -> page: 'wishes'
     waitOn: -> Meteor.subscribe('wishes')
@@ -78,7 +74,6 @@ Router.map ->
   @route 'agenda',
     path: '/agenda'
     waitOn: -> Meteor.subscribe('agenda')
-    tempalte: 'agenda'
     fastRender: true
     data: ->
       page: 'agenda'
@@ -108,17 +103,39 @@ Router.map ->
       q.type = @params.query?.filterType if @params.query?.filterType
       q.tags = @params.query?.filterTag if @params.query?.filterTag
       Meteor.subscribe('proposals', q, {createdAt: -1})
-    tempalte: 'proposals'
     fastRender: true
     data: ->
-      page: 'proposals'
       q = {}
       q.type = @params.query?.filterType if @params.query?.filterType
       q.tags = @params.query?.filterTag if @params.query?.filterTag
-      proposals: Proposal.where(q, {createdAt: -1})
-      filterType: @params.query?.filterType
-      filterTag: @params.query?.filterTag
+      {
+        page: 'proposals'
+        proposals: Proposal.where(q, {createdAt: -1})
+        filterType: @params.query?.filterType
+        filterTag: @params.query?.filterTag
+      }
     onAfterAction: -> seo('Proposals')
+
+  @route 'sessions',
+    path: '/sessions'
+    waitOn: ->
+      q = {}
+      q.type = @params.query?.filterType if @params.query?.filterType
+      q.tags = @params.query?.filterTag if @params.query?.filterTag
+      Meteor.subscribe('proposals', q, {createdAt: -1})
+    template: 'proposals'
+    fastRender: true
+    data: ->
+      q = {}
+      q.type = @params.query?.filterType if @params.query?.filterType
+      q.tags = @params.query?.filterTag if @params.query?.filterTag
+      {
+        page: 'sessions'
+        proposals: Proposal.where(q, {createdAt: -1})
+        filterType: @params.query?.filterType
+        filterTag: @params.query?.filterTag
+      }
+    onAfterAction: -> seo('Sessions')
 
   @route 'vote',
     path: '/vote'
@@ -128,7 +145,6 @@ Router.map ->
       q.type = @params.query?.filterType if @params.query?.filterType
       q.tags = @params.query?.filterTag if @params.query?.filterTag
       Meteor.subscribe('proposals-min', q)
-    tempalte: 'vote'
     data: ->
       sum = (arr) -> if arr.length then _.reduce(arr, ((sum, num) -> sum + num), 0) / arr.length else 0
       sort = (speakers) ->
@@ -153,7 +169,6 @@ Router.map ->
     fastRender: true
     waitOn: ->
       Meteor.subscribe('speakers', {_id: @params.id})
-    tempalte: 'speaker'
     notFoundTemplate: 'notFound'
     data: ->
       speaker = User.find(@params.id)
@@ -163,7 +178,6 @@ Router.map ->
 
   @route 'speakers',
     waitOn: -> Meteor.subscribe('proposals')
-    tempalte: 'speakers'
     fastRender: true
     data: ->
       page: 'speakers'
@@ -172,7 +186,6 @@ Router.map ->
 
   @route 'users',
     waitOn: -> Meteor.subscribe('users')
-    tempalte: 'users'
     fastRender: true
     data: -> page: 'users'
     onAfterAction: -> seo('Users')
@@ -180,7 +193,6 @@ Router.map ->
   @route 'user',
     path: '/user/:id/:name?'
     fastRender: true
-    tempalte: 'user'
     waitOn: ->
       Meteor.subscribe('users', {_id: @params.id})
     notFoundTemplate: 'notFound'
@@ -193,7 +205,6 @@ Router.map ->
   @route 'wish',
     path: '/wish/:id/:title?'
     waitOn: -> Meteor.subscribe('wishes', _id: @params.id)
-    tempalte: 'wish'
     fastRender: true
     notFoundTemplate: 'notFound'
     data: ->
@@ -204,35 +215,30 @@ Router.map ->
 
   @route 's2013',
     path: '/s2013'
-    tempalte: 's2013'
     fastRender: true
     data: -> page: 's2013'
     onAfterAction: -> seo('2013')
 
   @route 's2014',
     path: '/s2014'
-    tempalte: 's2014'
     fastRender: true
     data: -> page: 's2014'
     onAfterAction: -> seo('2014')
 
   @route 'info',
     path: '/info'
-    tempalte: 'info'
     fastRender: true
     data: -> page: 'info'
     onAfterAction: -> seo('Info')
 
   @route 'coc',
     path: '/coc'
-    tempalte: 'coc'
     fastRender: true
     data: -> page: 'coc'
     onAfterAction: -> seo('Code of Conduct')
 
   @route 'sponsors',
     waitOn: -> Meteor.subscribe('sponsors')
-    tempalte: 'sponsors'
     fastRender: true
     data: ->
       page: 'sponsors'
@@ -241,7 +247,6 @@ Router.map ->
 
   @route 'community',
     path: '/community'
-    tempalte: 'community'
     data: -> page: 'community'
     fastRender: true
     onAfterAction: -> seo('Community')
