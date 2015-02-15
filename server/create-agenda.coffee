@@ -8,14 +8,14 @@ Meteor.startup ->
     icon1: "pencil"
   AgendaItem.create
     time: new Date("Mar 11 2015 10:00:00 GMT+0200")
-    class1: "Welcome"
+    class1: "Welcome - Prof Irad Yavneh, Dean, CS Faculty, Technion"
     icon1: "group"
   AgendaItem.create
-    time: new Date("Mar 11 2015 10:05:00 GMT+0200")
+    time: new Date("Mar 11 2015 10:10:00 GMT+0200")
     class1: "Keynote"
     icon1: "key"
   AgendaItem.create
-    time: new Date("Mar 11 2015 10:45:00 GMT+0200")
+    time: new Date("Mar 11 2015 10:50:00 GMT+0200")
     class1: "Break"
   AgendaItem.create
     time: new Date("Mar 11 2015 11:00:00 GMT+0200")
