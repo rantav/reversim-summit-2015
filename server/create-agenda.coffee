@@ -8,11 +8,11 @@ Meteor.startup ->
     icon1: "pencil"
   AgendaItem.create
     time: new Date("Mar 11 2015 10:00:00 GMT+0200")
-    class1: "Welcome - Prof Irad Yavneh, Dean, CS Faculty, Technion"
+    class1: "Welcome - Dean CS fculty Prof Irad Yavneh"
     icon1: "group"
   AgendaItem.create
     time: new Date("Mar 11 2015 10:10:00 GMT+0200")
-    class1: "Keynote"
+    class1: "Keynote - Eran Yahav - Programming with Millions of Examples"
     icon1: "key"
   AgendaItem.create
     time: new Date("Mar 11 2015 10:50:00 GMT+0200")
@@ -85,7 +85,7 @@ Meteor.startup ->
     icon1: "group"
   AgendaItem.create
     time: new Date("Mar 12 2015 10:05:00 GMT+0200")
-    class1: "Keynote"
+    class1: "Keynote - Ronny Lempel - Same Problems, Different Actors: Symmetry in the Content Discovery Marketplace"
     icon1: "key"
   AgendaItem.create
     time: new Date("Mar 12 2015 10:45:00 GMT+0200")
