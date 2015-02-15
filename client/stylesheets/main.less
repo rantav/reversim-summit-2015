@@ -70,6 +70,131 @@ html, body {
   padding-bottom:@footer-height; /* this needs to be bigger than footer height*/
 }
 
+.mobile {
+  #main {
+    padding-bottom: @footer-height; /* this needs to be bigger than footer height*/
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: column;
+    -webkit-flex-direction: column;
+  }
+
+
+}
+
+.header-mobile {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 100;
+  .row {
+    display: flex;
+    display: -webkit-flex;
+    height: 48px;
+    background-color: black;
+
+    h3 {
+      margin: 0;
+      flex: 1;
+      -webkit-flex: 1;
+      text-align: center;
+      display: flex;
+      display: -webkit-flex;
+      align-items: center;
+      -webkit-align-items: center;
+    }
+  }
+}
+
+  #sideMenuBtn {
+    color: white;
+    margin-left: 10px;
+    display: flex;
+    display: -webkit-flex;
+    align-items: center;
+    -webkit-align-items: center;
+    justify-content: center;
+    -webkit-justify-content: center;
+    flex-basis: 48px;
+    -webkit-flex-basis: 48px;
+  }
+
+  #overlay {
+    position: fixed;
+    top: 48px;
+    left: 0;
+    background-color: black;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+
+    -webkit-transition-property: opacity;
+
+    &.pointer-none {
+      pointer-events: none;
+    }
+  }
+
+
+  .side-menu-hidden {
+    position: fixed;
+    top: 48px;
+    -webkit-transform: translate3d(-100%, 0, 0);
+    height: 100%;
+    background-color: white;
+    width: 80%;
+
+    &.showFromLeft {
+      -webkit-animation-name: showFromLeft;
+      -webkit-animation-duration: 350ms;
+      -webkit-animation-fill-mode: forwards;
+    }
+
+    &.hideToLeft {
+      -webkit-animation-name: hideToLeft;
+      -webkit-animation-duration: 350ms;
+      -webkit-animation-fill-mode: forwards;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 15px;
+
+      li {
+        display: flex;
+        display: -webkit-flex;
+        height: 48px;
+        align-items: center;
+        -webkit-align-items: center;
+
+        i {
+          flex-basis: 40px;
+          -webkit-flex-basis: 40px;
+          display: flex;
+          display: -webkit-flex;
+          justify-content: center;
+          -webkit-justify-content: center;
+          font-size: 1.5em;
+        }
+
+        a {
+          text-decoration: none;
+        }
+      }
+    }
+  }
+
+  @-webkit-keyframes showFromLeft {
+    0% {-webkit-transform: translate3d(-100%, 0, 0);}
+    100% {-webkit-transform: translate3d(0, 0, 0);}
+  }
+
+  @-webkit-keyframes hideToLeft {
+    0% {-webkit-transform: translate3d(0, 0, 0);}
+    100% {-webkit-transform: translate3d(-100%, 0, 0);}
+  }
+
+
 .footer {
   position: relative;
   margin-top: -@footer-height; /* negative value of footer height */

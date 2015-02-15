@@ -13,6 +13,12 @@ Router.configure
   routeControllerNameConverter: 'upperCamelCase'
   # trackPageView: true
 
+if Meteor.isClient
+  ua = parseUseragent(window.navigator.userAgent)
+  if /ios|android/.test(ua.os.family)
+    Router.configure
+      layoutTemplate: 'layoutMobile'
+
 # Router.onAfterAction(filters.resetScroll,
 #   {except:['wishes', 'proposals', 'speakers', 'vote']});
 
