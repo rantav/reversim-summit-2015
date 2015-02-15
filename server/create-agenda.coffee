@@ -27,14 +27,14 @@ Meteor.startup ->
   AgendaItem.create
     time: new Date("Mar 11 2015 12:00:00 GMT+0200")
     class1: "ZcN9QbmsfAfLknk5a"
-    class2: "b3f2SCm3fpu6TB37w"
+    class2: "G55eQaRNcbRPvJhSu"
   AgendaItem.create
     time: new Date("Mar 11 2015 12:40:00 GMT+0200")
     class1: "Lunch"
     icon1: "cutlery"
   AgendaItem.create
     time: new Date("Mar 11 2015 13:40:00 GMT+0200")
-    class1: "Ignites"
+    class1: "Ignites,9hftG3biQTENTeP9K,E8Mfns6GXTj6jf4J6,FB9ADuP6pDqcGf7tq,GehMDtzJSNFLna7A6,Ntkq6XYBcbiDCtfgb"
     icon1: "fire"
     class2: "GK8QNv6vhAb763iwZ"
   AgendaItem.create
@@ -107,7 +107,7 @@ Meteor.startup ->
     icon1: "cutlery"
   AgendaItem.create
     time: new Date("Mar 12 2015 13:40:00 GMT+0200")
-    class1: "Ignites"
+    class1: "Ignites,QAccw5PDNSqFXPX4M,XFjdSijm82Y4Afngm,fQ8Eg8MnimDJufg4f,AS8o7CgACMLh3qGdt,NrHZHCukNczgwpqQf,fy5n9vFiX7hjNQk63"
     icon1: "fire"
     class2: "jrueTTCGDcuk6vCtp"
   AgendaItem.create
@@ -120,7 +120,7 @@ Meteor.startup ->
     icon1: "coffee"
   AgendaItem.create
     time: new Date("Mar 12 2015 15:20:00 GMT+0200")
-    class1: "Open Source in Israel,yFpX9vJpPxWD9EsoG,YapN2NL5xCdJoNFkq,ev4ERxP7qPc7S9ai9,Dekx6XaujGpHCFmWu,G55eQaRNcbRPvJhSu"
+    class1: "Open Source in Israel,yFpX9vJpPxWD9EsoG,YapN2NL5xCdJoNFkq,ev4ERxP7qPc7S9ai9,Dekx6XaujGpHCFmWu"
     icon1: "code-fork"
     class2: "qbT7S6CaDdKADJgLL"
   AgendaItem.create
