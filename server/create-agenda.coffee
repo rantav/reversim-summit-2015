@@ -12,7 +12,7 @@ Meteor.startup ->
     icon1: "group"
   AgendaItem.create
     time: new Date("Mar 11 2015 10:10:00 GMT+0200")
-    class1: "Keynote - Eran Yahav - Programming with Millions of Examples"
+    class1: "qLezrTGCWnQ4seArA"
     icon1: "key"
   AgendaItem.create
     time: new Date("Mar 11 2015 10:50:00 GMT+0200")
