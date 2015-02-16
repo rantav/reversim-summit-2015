@@ -4,7 +4,7 @@ Meteor.startup ->
   # Day 1
   AgendaItem.create
     time: new Date("Mar 11 2015 09:00:00 GMT+0200")
-    class1: "Registration"
+    class1: "Registration // Coffee"
     icon1: "pencil"
   AgendaItem.create
     time: new Date("Mar 11 2015 10:00:00 GMT+0200")
@@ -56,7 +56,8 @@ Meteor.startup ->
     class2: "67BiMY9jb2z4YexZP"
   AgendaItem.create
     time: new Date("Mar 11 2015 16:40:00 GMT+0200")
-    class1: "Break"
+    class1: "Coffee Break"
+    icon: "coffee"
   AgendaItem.create
     time: new Date("Mar 11 2015 16:50:00 GMT+0200")
     class1: "2aYp8wL6GKE6eNMTy"
@@ -77,7 +78,7 @@ Meteor.startup ->
   # Day 2
   AgendaItem.create
     time: new Date("Mar 12 2015 09:00:00 GMT+0200")
-    class1: "Registration"
+    class1: "Registration // Coffee"
     icon1: "pencil"
   AgendaItem.create
     time: new Date("Mar 12 2015 10:00:00 GMT+0200")
