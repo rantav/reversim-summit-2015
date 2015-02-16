@@ -1,4 +1,6 @@
 Meteor.startup ->
+  return
+
   AgendaItem._collection.remove({})
 
   # Day 1
