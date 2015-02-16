@@ -82,15 +82,21 @@ html, body {
 
 }
 
-.header-mobile {
-  position: fixed;
-  width: 100%;
-  top: 0;
-  z-index: 100;
-  .row {
+
+#container {
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+
+  header {
+    width: 100%;
+    top: 0;
+    z-index: 100;
     display: flex;
     display: -webkit-flex;
-    height: 48px;
+    flex: 0 0 44px;
     background-color: black;
 
     h3 {
@@ -104,11 +110,58 @@ html, body {
       -webkit-align-items: center;
     }
   }
+
+  #main-content {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .landing {
+
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      display: flex;
+      display: -webkit-flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 200px;
+      width: 130px;
+      margin-top: 10%;
+      align-items: center;
+      -webkit-align-items: center;
+      box-shadow: -1px 0px 9px black;
+      margin-left: 10%;
+      border-radius: 5px;
+
+      i {
+        flex-basis: 40px;
+        -webkit-flex-basis: 40px;
+        font-size: 1.5em;
+      }
+
+      a {
+        text-decoration: none;
+        font-size: 1.5em;
+      }
+    }
+  }
+
+  #mobile-footer {
+    flex: 0 0 44px;
+    display: flex;
+    justify-content: center;
+    .footer {
+      margin: 0;
+      padding: 0;
+    }
+  }
 }
 
   #sideMenuBtn {
     color: white;
-    margin-left: 10px;
     display: flex;
     display: -webkit-flex;
     align-items: center;
@@ -156,32 +209,7 @@ html, body {
       -webkit-animation-fill-mode: forwards;
     }
 
-    ul {
-      list-style: none;
-      padding-left: 15px;
 
-      li {
-        display: flex;
-        display: -webkit-flex;
-        height: 48px;
-        align-items: center;
-        -webkit-align-items: center;
-
-        i {
-          flex-basis: 40px;
-          -webkit-flex-basis: 40px;
-          display: flex;
-          display: -webkit-flex;
-          justify-content: center;
-          -webkit-justify-content: center;
-          font-size: 1.5em;
-        }
-
-        a {
-          text-decoration: none;
-        }
-      }
-    }
   }
 
   @-webkit-keyframes showFromLeft {

@@ -47,6 +47,13 @@ Router.map ->
     onAfterAction: ->
       seo('')
 
+  @route 'homeMobile',
+    path: '/m'
+    fastRender: true
+    data: -> page: 'home'
+    onAfterAction: ->
+      seo('')
+
   @route 'about',
     path: '/about'
     fastRender: true

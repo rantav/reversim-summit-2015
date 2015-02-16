@@ -1,0 +1,48 @@
+<template name='homeMobile'>
+    <div class="landing">
+        <li class="{{activeClass 'agenda'}}">
+            <i class="fa fa-home"></i>
+            <a href="{{pathFor 'agenda'}}">Agenda</a>
+        </li>
+      {{#if cfpEnabled}}
+          <li class="{{activeClass 'propose'}}">
+              <i class="fa fa-bullhorn"></i>
+              <a href="{{pathFor 'propose'}}">Propose</a>
+          </li>
+      {{/if}}
+      {{#if votingEnabled}}
+          <li class="{{activeClass 'vote'}}">
+              <a href="{{pathFor 'vote'}}"><strong>Vote</strong></a>
+          </li>
+      {{/if}}
+      {{#if proposalsSelected}}
+          <li class="{{activeClass 'sessions'}}">
+              <i class="fa fa-home"></i>
+              <a href="{{pathFor 'sessions'}}">Sessions</a>
+          </li>
+      {{else}}
+          <li class="{{activeClass 'proposals'}}">
+              <a href="{{pathFor 'proposals'}}">Proposals</a>
+          </li>
+      {{/if}}
+        <li class="{{activeClass 'speakers'}}">
+            <i class="fa fa-home"></i>
+            <a href="{{pathFor 'speakers'}}">Speakers</a>
+        </li>
+        <li class="{{activeClass 'sponsors'}}">
+            <i class="fa fa-home"></i>
+            <a href="{{pathFor 'sponsors'}}">Sponsors</a>
+        </li>
+      {{#if canSeeHidden}}
+          <li class="{{activeClass 'users'}}">
+              <i class="fa fa-users"></i>
+              <a href="{{pathFor 'users'}}">Users <small>({{users}})</small></a>
+          </li>
+      {{/if}}
+      {{#if isSpeaker}}
+        {{#with user}}
+            <li><a href='{{pathFor "speaker"}}'><strong>My Speaker Page</strong></a></li>
+        {{/with}}
+      {{/if}}
+    </div>
+</template>
