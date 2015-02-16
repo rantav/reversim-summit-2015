@@ -52,7 +52,7 @@ Meteor.startup ->
     class2: "9PQJ5LRMtnyeSi3cc"
   AgendaItem.create
     time: new Date("Mar 11 2015 16:00:00 GMT+0200")
-    class1: "3sGqwMciCRvoyYKTJ"
+    class1: "AzYMQM4cKTXitHA7Y"
     class2: "67BiMY9jb2z4YexZP"
   AgendaItem.create
     time: new Date("Mar 11 2015 16:40:00 GMT+0200")
@@ -112,7 +112,7 @@ Meteor.startup ->
     class2: "jrueTTCGDcuk6vCtp"
   AgendaItem.create
     time: new Date("Mar 12 2015 14:10:00 GMT+0200")
-    class1: "AzYMQM4cKTXitHA7Y"
+    class1: "3sGqwMciCRvoyYKTJ"
     class2: "sk42ziAvy47MGBrLF"
   AgendaItem.create
     time: new Date("Mar 12 2015 14:50:00 GMT+0200")
