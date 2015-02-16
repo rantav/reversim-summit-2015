@@ -1,10 +1,12 @@
 Meteor.startup ->
+  return
+
   AgendaItem._collection.remove({})
 
   # Day 1
   AgendaItem.create
     time: new Date("Mar 11 2015 09:00:00 GMT+0200")
-    class1: "Registration"
+    class1: "Registration // Coffee"
     icon1: "pencil"
   AgendaItem.create
     time: new Date("Mar 11 2015 10:00:00 GMT+0200")
@@ -52,11 +54,12 @@ Meteor.startup ->
     class2: "9PQJ5LRMtnyeSi3cc"
   AgendaItem.create
     time: new Date("Mar 11 2015 16:00:00 GMT+0200")
-    class1: "3sGqwMciCRvoyYKTJ"
+    class1: "AzYMQM4cKTXitHA7Y"
     class2: "67BiMY9jb2z4YexZP"
   AgendaItem.create
     time: new Date("Mar 11 2015 16:40:00 GMT+0200")
-    class1: "Break"
+    class1: "Coffee Break"
+    icon: "coffee"
   AgendaItem.create
     time: new Date("Mar 11 2015 16:50:00 GMT+0200")
     class1: "2aYp8wL6GKE6eNMTy"
@@ -77,7 +80,7 @@ Meteor.startup ->
   # Day 2
   AgendaItem.create
     time: new Date("Mar 12 2015 09:00:00 GMT+0200")
-    class1: "Registration"
+    class1: "Registration // Coffee"
     icon1: "pencil"
   AgendaItem.create
     time: new Date("Mar 12 2015 10:00:00 GMT+0200")
@@ -85,7 +88,7 @@ Meteor.startup ->
     icon1: "group"
   AgendaItem.create
     time: new Date("Mar 12 2015 10:05:00 GMT+0200")
-    class1: "Keynote - Ronny Lempel - Same Problems, Different Actors: Symmetry in the Content Discovery Marketplace"
+    class1: "HJKT4GYSqrkxzwpe5"
     icon1: "key"
   AgendaItem.create
     time: new Date("Mar 12 2015 10:45:00 GMT+0200")
@@ -112,7 +115,7 @@ Meteor.startup ->
     class2: "jrueTTCGDcuk6vCtp"
   AgendaItem.create
     time: new Date("Mar 12 2015 14:10:00 GMT+0200")
-    class1: "AzYMQM4cKTXitHA7Y"
+    class1: "3sGqwMciCRvoyYKTJ"
     class2: "sk42ziAvy47MGBrLF"
   AgendaItem.create
     time: new Date("Mar 12 2015 14:50:00 GMT+0200")

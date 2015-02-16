@@ -7,9 +7,9 @@ Template.agenda.helpers
   day2: ->
     _.sortBy(@items.filter((i) -> i.time > mid), (i) -> i.time)
 
-  canSee:  ->
-    u = User.current()
-    u and (u.admin() or u.moderator())
+  canSee:  -> true
+    # u = User.current()
+    # u and (u.admin() or u.moderator())
 
   canEdit:  ->
     u = User.current()
