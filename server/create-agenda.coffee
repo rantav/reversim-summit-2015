@@ -85,7 +85,7 @@ Meteor.startup ->
     icon1: "group"
   AgendaItem.create
     time: new Date("Mar 12 2015 10:05:00 GMT+0200")
-    class1: "Keynote - Ronny Lempel - Same Problems, Different Actors: Symmetry in the Content Discovery Marketplace"
+    class1: "HJKT4GYSqrkxzwpe5"
     icon1: "key"
   AgendaItem.create
     time: new Date("Mar 12 2015 10:45:00 GMT+0200")
