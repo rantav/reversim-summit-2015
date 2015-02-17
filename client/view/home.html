@@ -2,7 +2,10 @@
   <div>
     <h2>Save the date: Wednesday, Thursday 11-12 March 2015</h2>
     <p class="lead">Where: at the <strong>Technion faculty of CS, Haifa</strong></p>
-    <p class="lead">Agenda is now public. <a href='/agenda' class='btn btn-default'>See the agenda</a></p>
+    {{#if registrationOpen}}
+      <p class="lead">Registration is open. <a href='/register' class='btn btn-success'>Register here</a></p>
+    {{/if}}
+    <p class="lead">Agenda is now public. <a href='/agenda' class='btn btn-success'>See the agenda</a></p>
     <h2>Important Dates</h2>
     <ul>
       <li><em>Call for Proposals</em> starts Jan 20, <strong>ends Jan 27</strong> (7 days)</li>

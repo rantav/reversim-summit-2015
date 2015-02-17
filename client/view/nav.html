@@ -6,6 +6,11 @@
   <li class="{{activeClass 'agenda'}}">
     <a href="{{pathFor 'agenda'}}">Agenda</a>
   </li>
+  {{#if registrationOpen}}
+    <li class="{{activeClass 'register'}}">
+      <a href="{{pathFor 'register'}}">Register</a>
+    </li>
+  {{/if}}
   {{#if cfpEnabled}}
     <li class="{{activeClass 'propose'}}">
       <a href="{{pathFor 'propose'}}"><strong>Propose</strong></a>

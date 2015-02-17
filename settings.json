@@ -6,6 +6,7 @@
     "cfpEnabled": false,
     "wishEnabled": false,
     "speakersCanEditProposals": true,
-    "proposalsSelected": true
+    "proposalsSelected": true,
+    "registrationOpen": true
   }
 }

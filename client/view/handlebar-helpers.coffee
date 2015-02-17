@@ -75,3 +75,6 @@ Handlebars.registerHelper 'wishEnabled', ->
 
 Handlebars.registerHelper 'proposalsSelected', ->
   Meteor.settings.public.proposalsSelected
+
+Handlebars.registerHelper 'registrationOpen', ->
+  Meteor.settings.public.registrationOpen
