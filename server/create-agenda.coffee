@@ -10,7 +10,7 @@ Meteor.startup ->
     icon1: "pencil"
   AgendaItem.create
     time: new Date("Mar 11 2015 10:00:00 GMT+0200")
-    class1: "Welcome - Dean CS fculty Prof Irad Yavneh"
+    class1: "Welcome - CS faculty dean Prof. Irad Yavneh"
     icon1: "group"
   AgendaItem.create
     time: new Date("Mar 11 2015 10:10:00 GMT+0200")
@@ -59,7 +59,7 @@ Meteor.startup ->
   AgendaItem.create
     time: new Date("Mar 11 2015 16:40:00 GMT+0200")
     class1: "Coffee Break"
-    icon: "coffee"
+    icon1: "coffee"
   AgendaItem.create
     time: new Date("Mar 11 2015 16:50:00 GMT+0200")
     class1: "2aYp8wL6GKE6eNMTy"
