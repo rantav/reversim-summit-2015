@@ -1,6 +1,7 @@
 Template.navMobile.events
   'click a': (event, context)->
-    LayoutManager.hideNav(context)
+    if event.target.parentElement.getAttribute('id') != 'login-dropdown-list'
+      LayoutManager.hideNav(context)
 
 Template.navMobile.helpers
 
