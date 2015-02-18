@@ -44,6 +44,12 @@ Router.map ->
     path: '/'
     fastRender: true
     data: -> page: 'home'
+    onBeforeAction: ->
+      ua = parseUseragent(window.navigator.userAgent)
+      if /ios|android/.test(ua.os.family)
+        Router.go('homeMobile');
+      else
+        @next()
     onAfterAction: ->
       seo('')
 
