@@ -86,7 +86,9 @@ html, body {
 #container {
 
   display: flex;
+  display: -webkit-flex;
   flex-direction: column;
+  -webkit-flex-direction: column;
   height: 100%;
   overflow: hidden;
 
@@ -97,6 +99,7 @@ html, body {
     display: flex;
     display: -webkit-flex;
     flex: 0 0 44px;
+    -webkit-flex: 0 0 44px;
     background-color: black;
 
     h3 {
@@ -113,6 +116,7 @@ html, body {
 
   #main-content {
     flex: 1;
+    -webkit-flex: 1;
     overflow-y: auto;
     padding-left: 15px;
     padding-right: 15px;
@@ -127,13 +131,16 @@ html, body {
 
     list-style: none;
     display: flex;
+    display: -webkit-flex;
     flex-wrap: wrap;
+    -webkit-flex-wrap: wrap;
 
     li {
       display: flex;
       display: -webkit-flex;
       flex-direction: column;
-      justify-content: center;
+      -webkit-flex-direction: column;
+      -webkit-justify-content: center;
       height: 139px;
       width: 130px;
       margin-top: 10%;
@@ -158,8 +165,11 @@ html, body {
 
   #mobile-footer {
     flex: 0 0 44px;
+    -webkit-flex: 0 0 44px;
     display: flex;
+    display: -webkit-flex;
     justify-content: center;
+    -webkit-justify-content: center;
     box-shadow: -1px 3px 9px #000000;
     .footer {
       margin: 0;
