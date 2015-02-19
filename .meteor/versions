@@ -60,6 +60,8 @@ momentjs:moment@2.9.0
 mongo@1.0.11
 mrt:minimongoid@0.8.8
 mrt:underscore-string-latest@2.3.3
+mrt:useragent@0.0.2
+noorderstorm:jquery.transit@0.1.0
 oauth@1.1.3
 oauth2@1.1.2
 observe-sequence@1.0.4

@@ -1,0 +1,23 @@
+<template name='layoutMobile'>
+
+    <div id="container">
+        <header>
+            <div id="sideMenuBtn" class="fa fa-bars sideMenuBtn"></div>
+            <h3 class='text-muted no-underline'><a href='#'>Reversim Summit 2015</a></h3>
+        </header>
+        <div id="main-content">
+            {{> yield}}
+        </div>
+        <div id="mobile-footer">
+            {{> footer}}
+        </div>
+    </div>
+    <div id="overlay" class="pointer-none"></div>
+    <div id="sideMenu" class="side-menu-hidden">
+        <div class='row'>{{> navMobile}}</div>
+    </div>
+
+
+</template>
+
+<template name='setupMobile'></template>

@@ -30,12 +30,39 @@ seo = (title, description) ->
       app_id: '163492177191737'
     twitter:
       url: url
+if Meteor.isClient
+  ua = parseUseragent(window.navigator.userAgent)
+  if /ios|android/.test(ua.os.family)
+    Router.configure
+      layoutTemplate: 'layoutMobile'
+
+# Router.onAfterAction(filters.resetScroll,
+#   {except:['wishes', 'proposals', 'speakers', 'vote']});
 
 Router.map ->
   @route 'home',
     path: '/'
     fastRender: true
     data: -> page: 'home'
+    onBeforeAction: ->
+      ua = parseUseragent(window.navigator.userAgent)
+      if /ios|android/.test(ua.os.family)
+        Router.go('homeMobile');
+      else
+        @next()
+    onAfterAction: ->
+      seo('')
+
+  @route 'homeMobile',
+    path: '/m'
+    fastRender: true
+    data: -> page: 'home'
+    onBeforeAction: ->
+      ua = parseUseragent(window.navigator.userAgent)
+      if !/ios|android/.test(ua.os.family)
+        Router.go('home');
+      else
+        @next()
     onAfterAction: ->
       seo('')
 

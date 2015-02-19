@@ -1,12 +1,5 @@
 <template name='speaker'>
 <div class='about-speaker'>
-  {{#if canSeeEmail}}
-    {{#if speaker.email}}
-      <div class='pull-right'>
-        <strong><a href='mailto:{{speaker.email}}'>{{speaker.email}}</a></strong> <small class='mute'>(email visible only to you and to moderators)</small>
-      </div>
-    {{/if}}
-  {{/if}}
 
   {{#if editMode}}
     <ul class='pick-image'>
@@ -106,5 +99,12 @@
     {{/each}}
   </div>
 {{/if}}
+  {{#if canSeeEmail}}
+    {{#if speaker.email}}
+        <div class='pull-right'>
+            <strong><a href='mailto:{{speaker.email}}'>{{speaker.email}}</a></strong> <small class='mute'>(email visible only to you and to moderators)</small>
+        </div>
+    {{/if}}
+  {{/if}}
 {{> filepicker}}
 </template>

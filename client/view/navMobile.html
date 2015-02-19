@@ -1,0 +1,18 @@
+<template name='navMobile'>
+    <ul class="">
+        <li class="{{activeClass 'home'}}">
+            <i class="fa fa-home"></i>
+            <a href="{{pathFor 'homeMobile'}}">Home</a>
+        </li>
+        <li class="{{activeClass 'about'}}"><i class="fa fa-question"></i> <a href="{{pathFor 'about'}}">About</a></li>
+        <li class="{{activeClass 'coc'}}"><a href="{{pathFor 'coc'}}">Code of Conduct</a></li>
+        <li class="{{activeClass 's2013'}}"><a href="{{pathFor 's2013'}}">Summit 2013</a></li>
+        <li class="{{activeClass 's2014'}}"><a href="{{pathFor 's2014'}}">Summit 2014</a></li>
+        {{> loginButtons}}
+        {{#if isSpeaker}}
+            {{#with user}}
+                <li><a href='{{pathFor "speaker"}}'><strong>My Speaker Page</strong></a></li>
+            {{/with}}
+        {{/if}}
+    </ul>
+</template>
