@@ -36,9 +36,10 @@ Template.proposal.helpers
   editMode: -> @proposal?.editing and canEdit(@proposal)
 
 canEdit = (proposal) ->
-  Meteor.userId() and
-    ((proposal.mine() and (Meteor.settings.public.cfpEnabled or Meteor.settings.speakersCanEditProposals)) or
-     User.current().admin())
+  if Meteor.userId()
+    if User.current().admin() then return true
+    if Meteor.settings.public.cfpEnabled or Meteor.settings.public.speakersCanEditProposals
+      return proposal.mine()
 
 Template.proposal.rendered = ->
   $('[data-toggle="tooltip"]').tooltip()
