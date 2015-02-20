@@ -8,12 +8,6 @@ Template.navMobile.helpers
   activeClass:  (name) ->
     if @page == name then 'active' else ''
 
-  wishes: -> count('wishes')
-
-  proposals: -> count('proposals')
-
-  speakers: -> count('speakers')
-
   users: -> User.count()
 
   isSpeaker: ->

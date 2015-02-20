@@ -1,17 +1,8 @@
 Template.homeMobile.events
-  'click a': (event, context)->
-    LayoutManager.hideNav(context)
+  'click li': (event)->
+    Router.go(event.target.className)
 
 Template.homeMobile.helpers
-
-  activeClass:  (name) ->
-    if @page == name then 'active' else ''
-
-  wishes: -> count('wishes')
-
-  proposals: -> count('proposals')
-
-  speakers: -> count('speakers')
 
   users: -> User.count()
 
