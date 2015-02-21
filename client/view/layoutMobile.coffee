@@ -5,10 +5,12 @@ Template.layoutMobile.events
     else
       LayoutManager.showNav()
 
-
   'touchstart #overlay': (event, context) ->
     if context.$('#sideMenuBtn').hasClass('fa-arrow-left')
       LayoutManager.hideNav()
+
+  'click header': (event, context) ->
+    context.$('#main-content').children().first().scrollintoview({duration: 350})
 
 
 @LayoutManager = {}

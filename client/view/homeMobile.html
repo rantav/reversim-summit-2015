@@ -1,40 +1,40 @@
 <template name='homeMobile'>
     <div class="landing">
-        <li class="{{activeClass 'agenda'}}">
+        <li class="agenda">
             <i class="fa fa-calendar"></i>
             <a href="{{pathFor 'agenda'}}">Agenda</a>
         </li>
       {{#if cfpEnabled}}
-          <li class="{{activeClass 'propose'}}">
+          <li class="propose">
               <i class="fa fa-bullhorn"></i>
               <a href="{{pathFor 'propose'}}">Propose</a>
           </li>
       {{/if}}
       {{#if votingEnabled}}
-          <li class="{{activeClass 'vote'}}">
+          <li class="vote">
               <a href="{{pathFor 'vote'}}"><strong>Vote</strong></a>
           </li>
       {{/if}}
       {{#if proposalsSelected}}
-          <li class="{{activeClass 'sessions'}}">
+          <li class="sessions">
               <i class="fa fa-lightbulb-o"></i>
               <a href="{{pathFor 'sessions'}}">Sessions</a>
           </li>
       {{else}}
-          <li class="{{activeClass 'proposals'}}">
+          <li class="proposals">
               <a href="{{pathFor 'proposals'}}">Proposals</a>
           </li>
       {{/if}}
-        <li class="{{activeClass 'speakers'}}">
+        <li class="speakers">
             <i class="fa fa-bullhorn"></i>
             <a href="{{pathFor 'speakers'}}">Speakers</a>
         </li>
-        <li class="{{activeClass 'sponsors'}}">
+        <li class="sponsors">
             <i class="fa fa-money"></i>
             <a href="{{pathFor 'sponsors'}}">Sponsors</a>
         </li>
       {{#if canSeeHidden}}
-          <li class="{{activeClass 'users'}}">
+          <li class="users">
               <i class="fa fa-users"></i>
               <a href="{{pathFor 'users'}}">Users <small>({{users}})</small></a>
           </li>
