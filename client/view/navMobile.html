@@ -4,6 +4,14 @@
             <i class="fa fa-home"></i>
             <a href="{{pathFor 'homeMobile'}}">Home</a>
         </li>
+        <li class="{{activeClass 'agenda'}}">
+            <i class="fa fa-calendar"></i>
+            <a href="{{pathFor 'agenda'}}">Agenda</a>
+        </li>
+        <li class="{{activeClass 'speakers'}}">
+            <i class="fa fa-bullhorn"></i>
+            <a href="{{pathFor 'speakers'}}">Speakers</a>
+        </li>
         <li class="{{activeClass 'about'}}"><i class="fa fa-question"></i> <a href="{{pathFor 'about'}}">About</a></li>
         <li class="{{activeClass 'coc'}}"><a href="{{pathFor 'coc'}}">Code of Conduct</a></li>
         <li class="{{activeClass 's2013'}}"><a href="{{pathFor 's2013'}}">Summit 2013</a></li>
