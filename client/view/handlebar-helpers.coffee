@@ -78,3 +78,6 @@ Handlebars.registerHelper 'proposalsSelected', ->
 
 Handlebars.registerHelper 'registrationOpen', ->
   Meteor.settings.public.registrationOpen
+
+Handlebars.registerHelper 'showInfoPage', ->
+  Meteor.settings.public.showInfoPage
