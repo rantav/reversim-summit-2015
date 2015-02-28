@@ -39,6 +39,10 @@
               <a href="{{pathFor 'users'}}">Users <small>({{users}})</small></a>
           </li>
       {{/if}}
+        <li class="info">
+            <i class="fa fa-info"></i>
+            <a href="{{pathFor 'info'}}">Info</a>
+        </li>
       {{#if isSpeaker}}
         {{#with user}}
             <li><a href='{{pathFor "speaker"}}'><strong>My Speaker Page</strong></a></li>
